@@ -1,0 +1,21 @@
+.van-popup {
+	position: fixed;
+	width: 750px;
+}
+
+.top {
+	left: 0;
+	right: 0;
+}
+.bottom {
+	left: 0;
+	right: 0;
+}
+.left {
+	bottom: 0;
+	top: 0;
+}
+.right {
+	bottom: 0;
+	top: 0;
+}

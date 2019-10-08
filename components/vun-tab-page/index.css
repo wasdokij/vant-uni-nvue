@@ -1,0 +1,36 @@
+  .wxc-tab-page {
+    width: 750px;
+    background-color: #f2f3f4;
+  }
+
+  .tab-title-list {
+    width: 750px;
+    position: absolute;
+    flex-direction: row;
+  }
+
+  .title-item {
+    justify-content: center;
+    align-items: center;
+    border-bottom-style: solid;
+  }
+
+  .border-bottom {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .tab-page-wrap {
+    width: 750px;
+  }
+
+  .tab-container {
+    flex: 1;
+    flex-direction: row;
+    position: absolute;
+  }
+
+  .tab-text {
+    lines: 1;
+    text-overflow: ellipsis;
+  }

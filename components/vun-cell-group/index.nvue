@@ -1,0 +1,24 @@
+<template>
+	<block>
+		<text v-if="title" class="van-cell-group__title">{{ title }}</text>
+		<view class="van-cell-group" :class="border ? 'van-hairline--top-bottom' : ''">
+			<slot />
+		</view>
+	</block>
+</template>
+
+<script>
+export default {
+	props: {
+		title: String,
+		border: {
+			type: Boolean,
+			default: true
+		}
+	}
+};
+</script>
+
+<style scoped lang="scss">
+@import './index.scss';
+</style>

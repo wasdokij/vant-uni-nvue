@@ -1,0 +1,99 @@
+<template>
+	<view class="van-hairline--bottom" @click="jumpLink" :class="setClass" :hover-class="clickable || isLink ? 'van-cell--hover' : '' " hover-stay-time="70" :style="customStyle">
+		<view class="van-cell-wrap">
+			<vun-icon v-if="icon" :color="iconColor" :size="iconSize" :custom-style="iconStyle" :name="icon" class="van-cell__left-icon-wrap" />
+			<slot v-else name="icon" />
+			<view :style="{'width': titleWidth || 'auto'}" class="van-cell__title title-class"
+			 :class="title  ? '' : 'none'">
+				<text v-if="title" class="van-cell__title__text">{{ title }}</text>
+				<slot v-else name="title" />
+			</view>
+
+			<view class="van-cell__value value-class">
+				<text v-if="value || value === 0"  class="van-cell__value__text">{{ value }}</text>
+				<slot v-else name="value" />
+			</view>
+
+			<vun-icon v-if="isLink" size="32" name="arrow" color="#969799" class="van-cell__right-icon-wrap" />
+			<slot v-else name="right-icon" />
+			<slot name="extra" />
+		</view>
+		<view v-if="label || useLabelSlot" class="van-cell__label label-class">
+			<slot v-if="useLabelSlot" name="label" />
+			<text v-else-if="label" class="van-cell__label__text">{{ label }}</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	import VunIcon from '../vun-icon/index.nvue';
+	import { bem } from '../wxs/utils.js';
+	import {
+		link
+	} from '../mixins/link';
+	export default {
+		components: {
+			VunIcon
+		},
+		mixins: [link],
+		props: {
+			url: String,
+			title: null,
+			value: null,
+			icon: String,
+			size: String,
+			label: String,
+			center: Boolean,
+			isLink: Boolean,
+			required: Boolean,
+			clickable: Boolean,
+			titleWidth: String,
+			customStyle: String,
+			useLabelSlot: Boolean,
+			linkType: {
+				type: String,
+				default: 'navigateTo'
+			},
+			iconColor: {
+				type: String,
+				default: '#333'
+			},
+			iconStyle: Object,
+			iconSize:  {
+				type: String,
+				default: '40'
+			},
+			border: {
+				type: Boolean,
+				default: true
+			}
+		},
+		data() {
+			return {
+				setClass: ''
+			};
+		},
+		created() {
+			this.setClass = bem('cell', [this.size, {
+				center: this.center,
+				required: this.required,
+				borderless: !this.border,
+				clickable: this.isLink || this.clickable
+			}])
+		},
+		methods: {
+			jumpLink(urlKey) {
+				const url = this.url;
+				if (url) {
+					uni[this.linkType]({
+						url
+					});
+				}
+			}
+		}
+	};
+</script>
+
+<style scoped lang="scss">
+	@import './index.scss';
+</style>

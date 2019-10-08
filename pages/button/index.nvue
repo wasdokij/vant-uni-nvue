@@ -1,0 +1,150 @@
+<template>
+	<view class="page">
+		<!-- start 按钮类型 -->
+		<view class="demo-block">
+			<text class="demo-block__title">按钮类型</text>
+			<view class="demo-block-item">
+				<vun-button type="default" text="默认按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="primary" text="主要按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="info" text="信息按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="warning" text="警告按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="danger" text="危险按钮" />
+			</view>
+		</view>
+		<!-- end 按钮类型 -->
+		
+		<!-- start 朴素按钮 -->
+		<view class="demo-block">
+			<text class="demo-block__title">朴素按钮</text>
+			<view class="demo-block-item">
+				<vun-button plain type="primary" text="朴素按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button plain type="info" text="朴素按钮" />
+			</view>
+		</view>
+		<!-- end 朴素按钮 -->
+		
+		<!-- start 细边框 -->
+		<view class="demo-block">
+			<text class="demo-block__title">细边框</text>
+			<view class="demo-block-item">
+				<vun-button plain hairline type="primary" text="细边框" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button plain hairline type="info" @click="omsds" text="细边框" />
+			</view>
+		</view>
+		<!-- end 细边框 -->
+		
+		<!-- start 禁用状态 -->
+		<view class="demo-block">
+			<text class="demo-block__title">禁用状态</text>
+			<view class="demo-block-item">
+				<vun-button disabled type="primary" text="禁用状态" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button disabled type="info" text="禁用状态" />
+			</view>
+		</view>
+		<!-- end 禁用状态 -->
+		
+		<!-- start 加载状态 -->
+		<view class="demo-block"> 
+			<text class="demo-block__title" >加载状态</text>
+			<view class="demo-block-item">
+				<vun-button loading type="primary" text="加载状态" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button loading loading-url="../../static/loading.gif" type="primary" text="加载状态" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button loading type="info" loading-text="加载中..." />
+			</view>
+		</view>
+		<!-- end 加载状态 -->
+		
+		<!-- start 按钮形状 -->
+		<view class="demo-block">
+			<text class="demo-block__title">按钮形状</text>
+			<view class="demo-block-item">
+				<vun-button square type="primary" text="方形按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button round type="info" text="圆形按钮" />
+			</view>
+		</view>
+		<!-- end 按钮形状 -->
+		
+		<!-- start 图标按钮 -->
+		<view class="demo-block">
+			<text class="demo-block__title">图标按钮</text>
+			<view class="demo-block-item">
+				<vun-button icon-color="#000" icon="plus" type="primary" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button icon="plus" type="primary" text="按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button icon="https://img.yzcdn.cn/vant/logo.png" type="info" text="按钮"></vun-button>
+			</view>
+		</view>
+		<!-- end 图标按钮 -->
+		
+		<!-- start 按钮尺寸 -->
+		<view class="demo-block">
+			<text class="demo-block__title">按钮尺寸</text>
+			<view class="demo-block-item">
+				<vun-button type="primary" size="large" text="大号按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="primary" size="normal" text="普通按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="primary" size="small" text="小型按钮" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="primary" size="mini" text="迷你按钮" />
+			</view>
+		</view>
+		<!-- end 按钮尺寸 -->
+	</view>
+</template>
+
+<script>
+	import VunButton from '@/components/vun-button'
+	export default {
+		components: {
+			VunButton,
+		},
+		methods: {
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0 32upx;
+		margin-bottom: 24upx;
+		&-item {
+			margin-bottom: 20upx;
+		}
+		&__title {
+			padding: 35upx 0;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

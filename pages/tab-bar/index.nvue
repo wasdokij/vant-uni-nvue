@@ -1,0 +1,64 @@
+<template>
+	<view class="page">
+		<vun-tab-bar 
+		:tab-titles="tabTitles"
+		 :tab-styles="tabStyles" 
+		 title-type="icon"
+			@wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
+			<!-- 第一个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>首页</text></view>
+			<!-- 第二个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>特别推荐</text></view>
+			<!-- 第三个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>消息中心</text></view>
+			<!-- 第四个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>我的主页</text></view>
+		</vun-tab-bar>
+	</view>
+</template>
+<script>
+	import VunTabBar from '@/components/vun-tab-bar/index.nvue'
+	import Config from './config'
+	import BindEnv from '@/components/wxs/bind-env.js'
+	import {
+		Utils
+	} from '@/components/wxs/utils.js'
+	export default {
+		components: {
+			VunTabBar
+		},
+		data() {
+			return {
+				tabTitles: Config.tabTitles,
+				tabStyles: Config.tabStyles
+			}
+		},
+		created() {
+			 const tabPageHeight = Utils.env.getPageHeight();
+			// 如果页面没有导航栏，可以用下面这个计算高度的方法
+			// const tabPageHeight = env.deviceHeight / env.deviceWidth * 750;
+			const { tabStyles } = this;
+			try {
+			    const res = uni.getSystemInfoSync();
+					this.contentStyle = { height: (res.safeArea.height - tabStyles.height) + 'px' };
+			} catch (e) {
+			    // error
+			}
+		},
+		methods: {
+			wxcTabBarCurrentTabSelected (e) {
+				const index = e.page;
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.item-container {
+		width: 750upx;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background-color: #f2f3f4;
+	}
+</style>

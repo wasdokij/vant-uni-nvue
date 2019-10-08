@@ -1,0 +1,20 @@
+<template>
+	<image class="image" :style="{ width: size + 'upx', height: size + 'upx' }" mode="widthFix" :src="url" ></image>
+</template>
+<script>
+export default {
+	props: {
+		size: {
+				type: String,
+				default: '60'
+		},
+		url: {
+				type: String,
+				default: 'http://ww3.sinaimg.cn/large/006tNbRwly1feoqhig367g306r06rglx.gif'
+		}
+    }
+};
+</script>
+<style scoped>
+	@import url("index.css");
+</style>

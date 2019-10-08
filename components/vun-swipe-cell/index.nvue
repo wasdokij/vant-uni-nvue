@@ -1,0 +1,143 @@
+<template>
+	<view class="container">
+		<view ref="skid" v-for="(item, i) of swipeArr" @click="onNodeClick(item, i)" :key="'skid-' + i" class="vun-skid"
+		 :style="{height: height + 'upx'}" @touchstart="(e) => !isAndroid && onPanStart(e, item, i)"
+		 @horizontalpan="(e) => isAndroid && onPanStart(e, item, i)" @touchend="(e) => onPanEnd(e, item, i)">
+			<view :style='styles' class="swipe-action-center">
+				<slot :val='{item: item, index: i}' />
+			</view>
+			<view class="swipe-action-right" :style="{width: (item.width || 100) + 'upx'}">
+				<view class="swipe-action-child"
+					v-for="(child, childIdx) of item.right" 
+					 @click="onRightNode(child, i, childIdx)" 
+					:style="child.style || {}"
+					:key="'child-' + childIdx">
+					<text class="swipe-action-text" >{{child.text}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	import Binding from "weex-bindingx";
+	const animation = weex.requireModule("animation");
+	import {
+		Utils
+	} from "../wxs/utils.js";
+	export default {
+		props: {
+			swipeArr: {
+				type: Array,
+				default: []
+			},
+			height: {
+				type: Number,
+				default: 80
+			},
+			styles: {
+				type: Object,
+				default: {}
+			}
+		},
+		data() {
+			return {
+				mobileX: 0,
+				saveIdx: null,
+				isAndroid: Utils.env.isAndroid()
+			};
+		},
+		methods: {
+			special(dom, styles) {
+				animation.transition(dom, {
+					styles,
+					duration: 200, //ms
+					timingFunction: "ease",
+					delay: 100 //ms
+				});
+			},
+			onRightNode(node, i, childIdx) {
+				if (!node.autoClose) {
+					this.mobileX = 1
+				}
+				this.$emit("onClose", {index: i, name: node.text,  instance: this});
+			},
+			onNodeClick(node, i, childIdx) {
+				if (this.mobileX < 0) {
+					this.mobileX = 0;
+					this.special(this.$refs.skid[this.saveIdx], {
+						transform: `translate(0, 0)`
+					});
+					this.isAndroid &&
+						this.special(this.$refs.skid[i], {
+							transform: `translate(0, 0)`
+						});
+				}
+			},
+			close () {
+				this.special(this.$refs.skid[this.saveIdx], {
+					transform: `translate(0, 0)`
+				})
+			},
+			onPanEnd(e, node, i) {},
+			onPanStart(e, node, i) {
+				const {
+					saveIdx
+				} = this;
+				if (saveIdx !== i && saveIdx !== null && this.$refs.skid[saveIdx]) {
+					this.special(this.$refs.skid[saveIdx], {
+						transform: `translate(0, 0)`
+					});
+					this.mobileX = 0;
+				}
+				this.saveIdx = i;
+				this.mobile(e, node, i)
+				e.stopPropagation();
+			},
+			mobile(e, node, i) {
+				var el = this.$refs['skid'][i];
+				Binding.bind({
+						anchor: el.ref,
+						eventType: "pan",
+						exitExpression: {
+							origin: `x > 0 || x < ${uni.upx2px(-node.width || -100)}`
+						},
+						props: [{
+							element: el.ref,
+							property: "transform.translateX",
+							expression: `x+${this.isAndroid ? 0 : this.mobileX}`
+						}]
+					},
+					e => {
+						const {
+							state,
+							deltaX
+						} = e;
+						if (state === "end" || state === 'exit') {
+							this.mobileX += deltaX;
+							this.movingDistance(this.mobileX, node, el);
+						}
+					}
+				);
+			},
+			movingDistance(scope, node, el) {
+				const len = node.right ? node.right.length : 0;
+				let width = -node.width || -100
+				const distance = uni.upx2px(width)
+				if (scope < -20) {
+					this.special(el, {
+						transform: `translate(${distance}px, 0)`
+					});
+					this.mobileX = distance;
+				} else {
+					this.special(el, {
+						transform: `translate(0, 0)`
+					});
+					this.mobileX = 0;
+				}
+			}
+		}
+	};
+</script>
+<style scoped lang="scss">
+	@import './index.scss';
+</style>

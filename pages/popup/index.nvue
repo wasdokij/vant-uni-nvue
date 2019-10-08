@@ -1,0 +1,78 @@
+<template>
+	<view class="page">
+		<!-- start 基础用法 -->
+		<view class="demo-block">
+			<text class="demo-block__title">基础用法</text>
+			<view class="demo-block-item">
+				<vun-button type="default" @click="onShow('center', 400)" text="展示弹出层" />
+			</view>
+		</view>
+		<!-- end 基础用法 -->
+		<!-- start 弹出位置 -->
+		<view class="demo-block">
+			<text class="demo-block__title">弹出位置</text>
+			<view class="demo-block-item">
+				<vun-button type="default" @click="onShow('top', 750)" text="顶部弹出" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="default" @click="onShow('bottom', 750)" text="底部弹出" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="default" @click="onShow('left', 400)" text="左侧弹出" />
+			</view>
+			<view class="demo-block-item">
+				<vun-button type="default" @click="onShow('right', 400)" text="右侧弹出" />
+			</view>
+		</view>
+		<!-- end 弹出位置 -->
+		<vun-popup :show="show" @close="close" :position="position" :width="width" height="400"></vun-popup>
+	</view>
+</template>
+<script>
+	import VunButton from '@/components/vun-button/index.nvue'
+	import VunPopup from '@/components/vun-popup/index.nvue'
+	export default {
+		components: {
+			VunPopup,
+			VunButton
+		},
+		data() {
+			return {
+				show: false,
+				position: '',
+				width: 750
+			}
+		},
+		methods: {
+			onShow(position, width) {
+				this.width = width
+				this.position = position
+				this.show = true
+			},
+			close(e) {
+				this.show = false
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

@@ -1,0 +1,184 @@
+<template>
+	<view>
+		<vun-overlay :show="haveOverlay && isOverShow" v-if="show" ref="overlay" v-bind="overlayCfg" @close="overlayClose"></vun-overlay>
+		<view ref="van-popup" v-if="show" :height="_height" :hack="isNeedShow" @click="()=>{}" :class="['van-popup', position]"
+		 :style="padStyle">
+			<slot />
+		</view>
+	</view>
+</template>
+
+<script>
+	const animation = weex.requireModule('animation');
+	import VunOverlay from '../vun-overlay';
+	export default {
+		components: {
+			VunOverlay
+		},
+		props: {
+			show: {
+				type: Boolean,
+				default: false
+			},
+			position: {
+				type: String,
+				default: 'center'
+			},
+			popupColor: {
+				type: String,
+				default: '#FFFFFF'
+			},
+			overlayCfg: {
+				type: Object,
+				default: () => ({
+					hasAnimation: true,
+					timingFunction: ['ease-in', 'ease-out'],
+					duration: 300,
+					opacity: 0.6
+				})
+			},
+			height: {
+				type: [Number, String],
+				default: 400
+			},
+			standOut: {
+				type: [Number, String],
+				default: 0
+			},
+			width: {
+				type: [Number, String],
+				default: 750
+			},
+			animation: {
+				type: Object,
+				default: () => ({
+					timingFunction: 'ease-in'
+				})
+			}
+		},
+		data: () => ({
+			haveOverlay: true,
+			isOverShow: true
+		}),
+		computed: {
+			isNeedShow() {
+				setTimeout(() => {
+					this.appearPopup(this.show);
+				}, 50);
+				return this.show;
+			},
+			_height() {
+				this.appearPopup(this.show, 150);
+				return this.height;
+			},
+			padStyle() {
+				const {
+					position,
+					width,
+					height,
+					popupColor,
+					standOut
+				} = this;
+				const stand = parseInt(standOut, 10);
+				let style = {
+					width: `${width}upx`,
+					backgroundColor: popupColor
+				};
+				let windowHeight = 500
+				if (position === 'center') {
+					try {
+					    const res = uni.getSystemInfoSync();
+					    windowHeight =  Number(res.screenHeight) + Number(res.statusBarHeight) + 40 
+					} catch (e) {
+					}
+				}
+				position === 'center' && (style = {
+					...style,
+					left: `${375 - Number(width)/ 2 }upx`,
+					top: `${windowHeight/ 2 }upx`,
+					height: `${height}upx`
+				});
+				position === 'top' && (style = {
+					...style,
+					top: `${-height + stand}upx`,
+					height: `${height}upx`
+				});
+				position === 'bottom' && (style = {
+					...style,
+					bottom: `${-height + stand}upx`,
+					height: `${height}upx`
+				});
+				position === 'left' && (style = {
+					...style,
+					left: `${-width + stand}upx`
+				});
+				position === 'right' && (style = {
+					...style,
+					right: `${-width + stand}upx`
+				});
+				return style;
+			}
+		},
+		methods: {
+			hide() {
+				this.appearPopup(false);
+				this.$refs.overlay.appearOverlay(false);
+			},
+			overlayClose() {
+				this.isShow && this.appearPopup(false);
+			},
+			appearPopup(bool, duration = 300) {
+				this.isShow = bool;
+				const popupEl = this.$refs['van-popup'];
+				if (!popupEl) {
+					return;
+				}
+				if (this.position === 'center') {
+					if (!bool) {
+						this.$emit('close', {
+							position: this.position
+						});
+					}
+					return
+				}
+				animation.transition(popupEl, {
+					styles: {
+						transform: this.getTransform(this.position, this.width, this.height, !bool)
+					},
+					duration,
+					delay: 0,
+					...this.animation
+				}, () => {
+					if (!bool) {
+						this.$emit('close', {
+							position: this.position
+						});
+					}
+				});
+			},
+			getTransform(position, width, height, bool) {
+				let _size = position === 'top' || position === 'bottom' ? height : width;
+				bool && (_size = 0);
+				let _transform;
+				switch (position) {
+					case 'top':
+						_transform = `translateY(${uni.upx2px(_size)}px)`;
+						break;
+					case 'bottom':
+						_transform = `translateY(-${uni.upx2px(_size)}px)`;
+						break;
+					case 'left':
+						_transform = `translateX(${uni.upx2px(_size)}px)`;
+						break;
+					case 'right':
+						_transform = `translateX(-${uni.upx2px(_size)}px)`;
+						break;
+				}
+				return _transform;
+			}
+		}
+	}
+</script>
+<style scoped>
+	@import url('index.css');
+</style>

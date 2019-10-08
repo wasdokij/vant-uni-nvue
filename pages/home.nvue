@@ -1,0 +1,39 @@
+<template>
+	<view>
+		<vun-cell-group title="基础组件">	
+		<vun-cell title="Button 按钮" url="/pages/button/index" is-link></vun-cell>
+			<vun-cell title="Icon 图标" url="/pages/icon/index" is-link></vun-cell>
+			<vun-cell title="Cell 单元格" url="/pages/cell/index" is-link></vun-cell>
+			<vun-cell title="Popup 弹出层" :border="false" url="/pages/popup/index" is-link></vun-cell>
+		</vun-cell-group>
+		<vun-cell-group title="反馈组件">
+			<vun-cell title="Loading 加载" url="/pages/loading/index" is-link></vun-cell>
+			<vun-cell title="Overlay 遮罩层" url="/pages/overlay/index" is-link></vun-cell>
+			<vun-cell title="SwipeCell 滑动单元格" url="/pages/swipe-cell/index" is-link></vun-cell>
+		</vun-cell-group>
+		<vun-cell-group title="导航组件">
+			<vun-cell title="TabBar 底部Tab组件" url="/pages/tab-bar/index" is-link></vun-cell>
+			<vun-cell title="TabPage 顶部Tab组件" url="/pages/tab-page/index" is-link></vun-cell>
+		</vun-cell-group>
+	</view>
+</template>
+
+<script>
+	import VunCellGroup from '@/components/vun-cell-group/index.nvue'
+	import VunCell from '@/components/vun-cell/index.nvue'
+	export default {
+		components: {
+			VunCellGroup,
+			VunCell
+		},
+		data() {
+			return {}
+		},
+		created() {},
+		methods: {}
+	}
+</script>
+
+<style>
+
+</style>

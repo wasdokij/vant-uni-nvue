@@ -1,0 +1,79 @@
+<template>
+	<view class="page">
+		<vun-tab-page ref="wxc-tab-page" :tab-titles="tabTitles" :tab-styles="tabStyles" title-type="icon" :tab-page-height="tabPageHeight"
+		 :pan-dist="100"
+		 @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+			<view v-for="(v, index) in tabList" :key="index" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'upx' }">
+				<text>本例子 来源 Weex ui 页面滑动切换组件</text>
+				<block v-for="(demo, key) in v" class="cell" :key="key">
+					<view class="content">
+						<text>{{demo}}</text>
+					</view>
+				</block>
+			</view>
+		</vun-tab-page>
+	</view>
+</template>
+<script>
+	import VunTabPage from '@/components/vun-tab-page/index.nvue'
+	import Config from './config'
+	import BindEnv from '@/components/wxs/bind-env.js'
+	import {
+		Utils
+	} from '@/components/wxs/utils.js'
+	export default {
+		components: {
+			VunTabPage
+		},
+		data() {
+			return {
+				tabTitles: Config.tabTitles,
+				tabStyles: Config.tabStyles,
+				tabList: [],
+				demoList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+				tabPageHeight: 1334,
+			}
+		},
+		created() {
+			this.tabPageHeight = Utils.env.getPageHeight();
+			this.tabList = [...Array(this.tabTitles.length).keys()].map(i => []);
+			this.$set(this.tabList, 0, [0]);
+		},
+		methods: {
+			wxcTabPageCurrentTabSelected (e) {
+					const index = e.page;
+					this.$set(this.tabList, index, [index]);
+				},
+				wxcPanItemPan (e) {
+					if (BindEnv.supportsEBForAndroid()) {
+						this.$refs['wxc-tab-page'].bindExp(e.element);
+					}
+				}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.item-container {
+	    width: 750px;
+	    background-color: #f2f3f4;
+	  }
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

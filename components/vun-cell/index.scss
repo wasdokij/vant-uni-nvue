@@ -1,0 +1,89 @@
+@import '../common/index.css';
+.cell {
+	
+}
+
+.van-cell {
+	position: relative;
+	padding: 20upx 30upx;
+	line-height: 48upx;
+	color: #333;
+	margin-bottom: 1upx;
+	background-color: #fff;
+	&-group {
+		background-color: #fff
+	}
+	
+	&-wrap {
+		flex-direction: row;
+		align-items: center;
+	}
+	// start 内容
+	&__title,
+	&__value {
+		flex: 1;
+		&__text {
+			font-size: 28upx;
+		}
+	}
+	&__value {margin-right: 10upx;}
+	&__value__text {
+		overflow: hidden;
+		color: #969799;
+		text-align: right;
+	}
+	&__label {
+		margin-top: 6upx;
+		font-size: 24upx;
+		line-height: 36upx;
+		color: #999;
+		&__text {
+			margin-top: 6upx;
+			margin-right: 15upx;
+			color: #969799;
+			font-size: 24upx;
+			line-height: 30upx;
+		}
+	}
+
+	// end 内容
+	&--borderless {
+		border-bottom-width: 0;
+	}
+	
+	// start 左右icon
+	&__left-icon-wrap,
+	&__right-icon-wrap {
+		height: 48upx;
+		font-size: 32upx;
+		align-items: center
+	}
+	&__left-icon-wrap {
+		margin-right: 10upx;
+	}
+	&__right-icon-wrap {
+		height: 40upx;
+		color: #999;
+	}
+	&__left-icon {
+		line-height: 48upx;
+	}
+	&__right-icon {
+		line-height: 48upx
+	}
+	// end 左右icon
+	
+}
+
+.van-cell--hover {
+	background-color: #f2f3f5
+}
+
+.van-cell--center {
+	align-items: center
+}
+
+.van-cell--large {
+	padding-top: 30upx;
+	padding-bottom: 30upx
+}

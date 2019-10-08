@@ -1,0 +1,132 @@
+<template>
+	<view class="page">
+		<!-- start SwipeCell 滑动单元格 -->
+		<view class="demo-block">
+			<text class="demo-block__title">SwipeCell 滑动单元格</text>
+		</view>
+		<vun-swipe-cell @onClose='onClose' :swipeArr="data"  right-width="100" >
+			<vun-cell-group slot-scope="val">
+				<vun-cell  :title="val.val.item.title" :border="false" :value="val.val.index" />
+			</vun-cell-group>
+		</vun-swipe-cell>
+		<!-- end SwipeCell 滑动单元格 -->
+	</view>
+</template>
+
+<script>
+	import VunSwipeCell from '@/components/vun-swipe-cell'
+	import VunCellGroup from '@/components/vun-cell-group/index.nvue'
+	import VunCell from '@/components/vun-cell/index.nvue'
+	export default {
+		components: {
+			VunCell,
+			VunCellGroup,
+			VunSwipeCell
+		},
+		data() {
+			return {
+				data: [{
+						title: "标题1",
+						width: 200,
+						right: [{
+								text: "收藏",
+								autoClose: true,
+								style: {
+									backgroundColor: "#ddd",
+									color: "white"
+								}
+							},
+							{
+								text: "删除",
+								style: {
+									backgroundColor: "#F4333C",
+									color: "white"
+								}
+							}
+						]
+					},
+					{
+						title: "标题2",
+						right: [{
+							text: "删除",
+							style: {
+								backgroundColor: "#F4333C",
+								color: "white"
+							}
+						}]
+					},
+					{
+						title: "标题3",
+						right: [{
+							text: "删除",
+							style: {
+								backgroundColor: "#F4333C",
+								color: "white"
+							}
+						}]
+					}
+				]
+			}
+		},
+		methods: {
+			deata (e) {
+				
+			},
+			onClose (e) {
+				const { instance, index, name } = e
+				if (name === '删除') {
+					uni.showModal({
+					    title: '提示',
+					    content: '确认删除？',
+					    success: res => {
+								if (res.confirm) {
+									instance.close()
+									setTimeout(() => {
+										this.$delete(this.data, index)
+									}, 500)
+								}
+					    }
+					})
+					return
+				}
+				uni.showToast({
+				    title: name
+				});
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0 32upx;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 0;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+
+	.swipe-action-child {
+		flex: 1;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background-color: #F4333C;
+	}
+
+	.swipe-action-text {
+		color: #FFFFFF;
+		font-size: 30upx;
+	}
+</style>

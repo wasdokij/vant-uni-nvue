@@ -1,0 +1,107 @@
+<template>
+	<view :class="setClass" :style="setStyle" @tap="onClick" :hover-class="disabled || loading ? '' : 'button-hover'">
+		<block v-if="loading">
+			<view class="van-button__text_wrap">
+				<vun-loading :size="loadingSize" :url="loadingUrl"></vun-loading>
+				<text v-if="loadingText"  class="van-button__loading-text" :class="setTextClass">{{ loadingText }}</text>
+			</view>
+		</block>
+		<block v-else>
+			<view class="van-button__text_wrap">
+				<vun-icon v-if="icon" :name="icon" 
+				:color="iconColor"
+				:custom-style="iconStyle"
+				 button-icon="van-button-class" class="van-button__icon" />
+				<text v-if="text" class="van-button__text" :class="setTextClass">{{text}}</text>
+				<slot v-else  />
+			</view>
+		</block>
+	</view>
+</template>
+
+<script>
+	import VunLoading from '../vun-loading'
+	import VunIcon from '../vun-icon';
+	import { bem } from '../wxs/utils.js'
+	export default {
+		components: {
+			VunLoading,
+			VunIcon
+		},
+		props: {
+			icon: String,
+			plain: Boolean,
+			round: Boolean,
+			square: Boolean,
+			loading: Boolean,
+			hairline: Boolean,
+			disabled: Boolean,
+			loadingText: String,
+			loadingUrl: String,
+			iconColor: {
+				type: String,
+				default: '#fff'
+			},
+			iconStyle: Object,
+			text: String,
+			type: {
+				type: String,
+				default: 'default'
+			},
+			size: {
+				type: String,
+				default: 'normal'
+			},
+			loadingSize: {
+				type: String,
+				default: '60'
+			},
+			btnStyle: Object
+		},
+		data() {
+			return {
+				setClass: '',
+				setTextClass: '',
+				setStyle: ''
+			};
+		},
+		mounted() {
+			const hairline = this.hairline ? 'van-button van-hairline--surround' : ''
+			const buttonc = bem('button', [this.type, this.size, {
+				round: this.round,
+				plain: this.plain,
+				square: this.square,
+				loading: this.loading,
+				disabled: this.disabled,
+				hairline: this.hairline,
+				unclickable: this.disabled || this.loading
+			}])
+			this.setClass = hairline + buttonc
+			let objPlain = {}
+			let type = ''
+			if (this.plain) {
+				 objPlain = {
+					plain: this.plain,
+					hairline: this.hairline,
+				}
+				type = this.type
+			} else {
+				type = this.type === 'default' ? 'default' : ''
+			}
+			const buttoncText = bem('button__text', [type, this.size, objPlain])
+			this.setTextClass += buttoncText
+			this.setStyle = this.btnStyle
+		},
+		methods: {
+			onClick() {
+				if (!this.disabled && !this.loading) {
+					this.$emit('click');
+				}
+			}
+		}
+	};
+</script>
+
+<style scoped lang="scss">
+	@import './index.scss';
+</style>

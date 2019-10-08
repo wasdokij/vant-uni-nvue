@@ -1,0 +1,51 @@
+<template>
+	<view class="van-icon-wrap" :class="iconImage" 
+	 @tap="onClick">
+		<text v-if="!iconImage" class="van-info" :style="(color ? 'color: ' + color + ';' : '') + (size ? 'font-size: ' + size + 'upx;' : '')">{{ Icon[name] || name }}</text>
+		<image v-else :src="name" :style="[customStyle]"  mode="widthFix" class="van-icon__image" />
+	</view>
+</template>
+
+<script>
+	// #ifdef APP-PLUS
+	const domModule = weex.requireModule("dom");
+	// #endif
+	import { isSrc } from '../wxs/utils.js';
+	import Icon from './type';
+	export default {
+		props: {
+			name: {
+				type: String,
+				default: ''
+			},
+			customStyle: [Object], // :customStyle="{width: '90upx', height: '90upx'}"
+			size: String,
+			color: String
+		},
+		data() {
+			return {
+				iconImage: '',
+				isSrc: false,
+				Icon
+			};
+		},
+		beforeCreate () {
+			domModule.addRule('fontFace', {
+				'fontFamily': 'vuniconfont',
+				'src': "url('https://at.alicdn.com/t/font_1445508_m13wbfzrt6i.ttf')"
+			})
+		},
+		created() {
+			this.iconImage = isSrc(this.name) ? 'van-icon--image' : ''
+		},
+		methods: {
+			onClick(event) {
+				this.$emit('click')
+			}
+		}
+	};
+</script>
+
+<style scoped>
+	@import url('index.css'); 
+</style>

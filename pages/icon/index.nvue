@@ -1,0 +1,52 @@
+<template>
+	<view class="page">
+		<!-- start 基础用法 -->
+		<view class="demo-block">
+			<text class="demo-block__title">基础用法</text>
+			<view class="demo-block-item">
+				<vun-icon name="arrow" color="red"/>
+				<vun-icon name="arrow"  size="80" />
+				<vun-icon :name="'\ue63f'" />
+			</view>
+		</view>
+		<!-- end 基础用法 -->
+		
+		<!-- start 传入图片 -->
+		<view class="demo-block">
+			<text class="demo-block__title">传入图片</text>
+			<view class="demo-block-item">
+				<vun-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" :custom-style="{width: '90upx', height: '90upx'}" />
+			</view>
+		</view>
+		<!-- end 传入图片 -->
+		
+	</view>
+</template>
+
+<script>
+	import VunIcon from '@/components/vun-icon/index.nvue'
+	export default {
+		components: {
+			VunIcon,
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0 32upx;
+		margin-bottom: 24upx;
+		&-item {
+			margin-bottom: 20upx;
+		}
+		&__title {
+			padding: 35upx 0;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

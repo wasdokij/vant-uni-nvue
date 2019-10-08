@@ -1,0 +1,33 @@
+@import '../common/index.css';
+
+	.container {
+		position: relative;
+		background-color: #dddddd;
+	}
+
+	.vun-skid {
+		flex-direction: row;
+	}
+
+	.swipe-action-right {
+		overflow: hidden;
+		flex-direction: row;
+		align-items: center;
+		background-color: #fff;
+	}
+	
+.swipe-action-center {
+		width: 750upx;
+}
+.swipe-action-child {
+		flex: 1;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background-color: #F4333C;
+	}
+
+	.swipe-action-text {
+		color: #FFFFFF;
+		font-size: 30upx;
+	}

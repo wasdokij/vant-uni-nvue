@@ -1,0 +1,120 @@
+<template>
+	<view class="page">
+		<view class="demo-block">
+			<text class="demo-block__title">基础用法</text>
+			<view class="demo-block-item">
+				<vun-cell-group>
+					<vun-cell title="单元格" value="内容" />
+					<vun-cell title="描述信息" value="内容" label="描述信息" />
+				</vun-cell-group>
+			</view>
+		</view>
+		<view class="demo-block">
+			<text class="demo-block__title">单元格大小</text>
+			<view class="demo-block-item">
+				<vun-cell-group>
+					<vun-cell title="单元格" value="内容" size="large" />
+					<vun-cell title="描述信息" value="内容" size="large" label="描述信息" />
+				</vun-cell-group>
+			</view>
+		</view>
+
+		<view class="demo-block">
+			<text class="demo-block__title">展示图标</text>
+			<view class="demo-block-item">
+				<vun-cell title="单元格" icon="filter"  value="内容" />
+				<vun-cell title="单元格" icon="https://img.yzcdn.cn/vant/logo.png" />
+			</view>
+		</view>
+		
+		<view class="demo-block">
+			<text class="demo-block__title">只设置 value</text>
+			<view class="demo-block-item">
+				<vun-cell value="内容" />
+			</view>
+		</view>
+		
+		<view class="demo-block">
+			<text class="demo-block__title">展示箭头</text>
+			<view class="demo-block-item">
+				<vun-cell title="单元格" is-link />
+				<vun-cell title="单元格" value="内容" is-link />
+			</view>
+		</view>
+		
+
+		<view class="demo-block">
+			<text class="demo-block__title">分组标题</text>
+			<view class="demo-block-item">
+				<vun-cell-group title="分组1">
+				  <vun-cell title="单元格" :border="false" value="内容" />
+				</vun-cell-group>
+				<vun-cell-group title="分组2">
+				  <vun-cell title="单元格" :border="false" value="内容" />
+				</vun-cell-group>
+			</view>
+		</view>
+		
+		<view class="demo-block">
+			<text class="demo-block__title">使用插槽</text>
+			<view class="demo-block-item">
+				<vun-cell value="内容" is-link>
+					<view slot="title" style="flex-direction: row;">
+					    <text class="van-cell-text">单元格</text>
+					    <text>标签</text>
+					  </view>
+				</vun-cell>
+				
+				<vun-cell title="单元格">
+				  <vun-icon slot="right-icon" :name="'\ue60d'" class="custom-icon" />
+				</vun-cell>
+			</view>
+		</view>
+		
+	</view>
+</template>
+
+<script>
+	import VunCellGroup from '@/components/vun-cell-group/index.nvue'
+	import VunCell from '@/components/vun-cell/index.nvue'
+	import VunIcon from '@/components/vun-icon/index.nvue';
+	export default {
+		components: {
+			VunCellGroup,
+			VunCell,
+			VunIcon
+		},
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

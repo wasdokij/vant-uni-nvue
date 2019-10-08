@@ -1,0 +1,12 @@
+.van-icon-wrap {
+	justify-content: center;
+}
+.van-info {
+	color: #323233;
+	font-size: 48upx;  
+	font-family: vuniconfont;  
+}
+.van-icon__image {
+	width: 40upx;
+	height: 40upx;
+}

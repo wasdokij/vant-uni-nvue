@@ -1,0 +1,104 @@
+<template>
+	<view class="van-overlay" :hack="shouldShow" v-if="show" ref="van-overlay"  @click="overlayClose" :style="overlayStyle" >
+	<slot />
+	</view>
+</template>
+
+<script>
+	const animation = weex.requireModule('animation');
+	export default {
+		props: {
+			show: {
+				type: Boolean,
+				default: true
+			},
+			top: {
+				type: Number,
+				default: 0
+			},
+			left: {
+				default: Number,
+				default: 0
+			},
+			hasAnimation: {
+				type: Boolean,
+				default: true
+			},
+			duration: {
+				type: [Number, String],
+				default: 300
+			},
+			timingFunction: {
+				type: Array,
+				default: () => (['ease-in', 'ease-out'])
+			},
+			opacity: {
+				type: [Number, String],
+				default: 0.6
+			},
+			canAutoClose: {
+				type: Boolean,
+				default: true
+			}
+		},
+		computed: {
+			overlayStyle() {
+				return {
+					opacity: this.hasAnimation ? 0 : 1,
+					backgroundColor: `rgba(0, 0, 0,${this.opacity})`,
+					left: this.left + 'upx',
+					top: this.top + 'upx'
+				}
+			},
+			shouldShow() {
+				const {
+					show,
+					hasAnimation
+				} = this;
+				hasAnimation && setTimeout(() => {
+					this.appearOverlay(show);
+				}, 50);
+				return show;
+			}
+		},
+		methods: {
+			overlayClose(e) {
+				this.canAutoClose ? this.appearOverlay(false) : this.$emit('transitionEnd', {});
+			},
+			appearOverlay(bool, duration = this.duration) {
+				const {
+					hasAnimation,
+					timingFunction,
+					canAutoClose
+				} = this;
+				const needEmit = !bool && canAutoClose;
+				needEmit && (this.$emit('close', {})); // 点击遮罩层立即执行回调
+				const overlayEl = this.$refs['van-overlay'];
+				if (hasAnimation && overlayEl) {
+					animation.transition(overlayEl, {
+						styles: {
+							opacity: bool ? 1 : 0
+						},
+						duration,
+						timingFunction: timingFunction[bool ? 0 : 1],
+						delay: 0
+					}, () => {
+						needEmit && (this.$emit('transitionEnd', {}));
+					});
+				} else {
+					needEmit && (this.$emit('transitionEnd', {}));
+				}
+			}
+		}
+	};
+</script>
+<style scoped>
+	.van-overlay {
+		width: 750upx;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+</style>
