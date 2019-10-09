@@ -1,0 +1,114 @@
+<template>
+	<view ref="vun-notify" 
+	 v-if="show" 
+	 :hack="isNeedShow" 
+	 class="vun-notify"
+	 :style="padStyle">
+		<text class="content" :style="contentStyle">{{content}}</text>
+	</view>
+</template>
+
+<script>
+	const animation = weex.requireModule('animation');
+	import {
+		Utils
+	} from "../wxs/utils.js";
+	export default {
+		data() {
+			return {
+				barHeight: Utils.env.getPageSafeArea().top,
+				show: false,
+				notifyColor: 'rgba(45, 61, 82, 0.7)',
+				notifyHeight: 88,
+				duration: 2000,
+				content: '',
+				contentStyle: {
+					fontSize: '32upx',
+					'color': '#e1e4e7'
+				},
+				animation: {
+					timingFunction: 'ease-out'
+				}
+			}
+		},
+		computed: {
+			upxHeight () {
+				const upxHeight = uni.upx2px(this.notifyHeight)
+				return this.barHeight + upxHeight
+			},
+			isNeedShow() {
+				setTimeout(() => {
+					this.appearPopup(this.show);
+				}, 50);
+				return this.show;
+			},
+			padStyle() {
+				const {
+					notifyColor,
+					upxHeight,
+					barHeight
+				} = this;
+				let style = {
+					backgroundColor: notifyColor,
+					paddingTop: barHeight,
+					top: `${-upxHeight}px`,
+					height: `${upxHeight}px`
+				};
+				return style;
+			}
+		},
+		methods: {
+			Notify(info) {
+				for (let i in info) {
+					this[i] = info[i]
+				}
+				this.show = true
+				if (!this.duration) return
+				setTimeout(() => {
+					this.hide()
+				}, this.duration);
+			},
+			hide() {
+				this.appearPopup(false);
+			},
+			overlayClose() {
+				this.isShow && this.appearPopup(false);
+			},
+			appearPopup(bool, duration = 300) {
+				this.isShow = bool;
+				const popupEl = this.$refs['vun-notify'];
+				if (!popupEl) {
+					return;
+				}
+				animation.transition(popupEl, {
+					styles: {
+						transform: this.getTransform(this.upxHeight, !bool)
+					},
+					duration,
+					delay: 0,
+					...this.animation
+				}, () => {
+					if (!bool) {
+						this.show = false
+						this.$emit('close');
+					}
+				});
+			},
+			getTransform(height, bool) {
+				let _size = height;
+				bool && (_size = 0);
+				return `translateY(${_size}px)`;
+			}
+		}
+	};
+</script>
+<style scoped>
+	.vun-notify {
+		position: fixed;
+		width: 750upx;
+		left: 0;
+		right: 0;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

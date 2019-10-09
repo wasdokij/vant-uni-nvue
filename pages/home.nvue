@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<view class="sasas"> 在线咨询</view>
 		<vun-cell-group title="基础组件">	
 		<vun-cell title="Button 按钮" url="/pages/button/index" is-link></vun-cell>
 			<vun-cell title="Icon 图标" url="/pages/icon/index" is-link></vun-cell>
@@ -8,6 +9,7 @@
 		</vun-cell-group>
 		<vun-cell-group title="反馈组件">
 			<vun-cell title="Loading 加载" url="/pages/loading/index" is-link></vun-cell>
+			<vun-cell title="Notify 消息通知" url="/pages/notify/index" is-link></vun-cell>
 			<vun-cell title="Overlay 遮罩层" url="/pages/overlay/index" is-link></vun-cell>
 			<vun-cell title="SwipeCell 滑动单元格" url="/pages/swipe-cell/index" is-link></vun-cell>
 		</vun-cell-group>
@@ -35,5 +37,8 @@
 </script>
 
 <style>
-
+.sasas {
+	position: fixed;
+	top: -100px;
+}
 </style>

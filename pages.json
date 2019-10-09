@@ -25,6 +25,12 @@
 			}
 		},
 		{
+			"path": "pages/notify/index",
+			"style": {
+				"navigationBarTitleText": "Notify 消息提示"
+			}
+		},
+		{
 			"path": "pages/cell/index",
 			"style": {
 				"navigationBarTitleText": "Cell 单元格"

@@ -128,6 +128,13 @@ const Utils = {
     isAliWeex () {
       return Utils.env.isTmall() || Utils.env.isTrip() || Utils.env.isTaobao();
     },
+		/**
+		 * 获取竖屏正方向下的安全区域
+		 * @returns {Object}
+		 */
+		getPageSafeArea () { 
+			return systemInfo.safeArea
+		},
     /**
      * 获取屏幕安全高度
      * @returns {Number}
@@ -141,7 +148,21 @@ const Utils = {
      */
     getScreenHeight () {
 			return systemInfo.screenHeight
-    }
+    },
+		/**
+		 * 判断当前是否为沉浸式状态栏模式
+		 * @returns {Boolean}
+		 */
+		isImmersedStatusbar () {
+		  return plus.navigator.isImmersedStatusbar();
+		},
+		/**
+		 * 查询设备是否为刘海屏
+		 * @returns {Boolean}
+		 */
+		hasNotchInScreen () {
+		  return plus.navigator.hasNotchInScreen();
+		},
   },
 
   /**
