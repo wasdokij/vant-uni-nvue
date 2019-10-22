@@ -65,6 +65,13 @@
 				setStyle: ''
 			};
 		},
+		watch: {
+			disabled (val) {
+				setTimeout(() => {
+					this.setStyle = {...this.btnStyle, opacity: val ? .5 : 1}
+				}, 10)
+			}
+		},
 		mounted() {
 			const hairline = this.hairline ? 'van-button van-hairline--surround' : ''
 			const buttonc = bem('button', [this.type, this.size, {

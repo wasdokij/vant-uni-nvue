@@ -56,3 +56,6 @@
 .van-hairline--surround {
 	border-width: 1upx
 }
+.vun-btn-hover {
+	opacity: .5;
+}

@@ -1,0 +1,41 @@
+ @import '../common/index.css';
+ .vun-stepper {
+	 align-items: center;
+   flex-direction: row;
+ }
+ 
+ .stepper-plus, 
+ .stepper-minus {
+   width: 56upx;
+   height: 56upx;
+   background-color: #f2f3f5;
+   align-items: center;
+   justify-content: center;
+	 &-disabled {
+		background-color: #f7f8fa;
+	 }
+ }
+ .stepper-minus {
+ 	border-top-left-radius: 6upx;
+ 	border-bottom-left-radius: 6upx;
+ }
+ .stepper-plus {
+	 border-top-right-radius: 6upx;
+	 border-bottom-right-radius: 6upx;
+ }
+ .stepper-input {
+   border-width: 0;
+   text-align: center;
+   color: #323233;
+   font-size: 30upx;
+   line-height: 58upx;
+   height: 58upx;
+   width: 86upx;
+	 margin: 0 2upx;
+	 background-color: #f2f3f5;
+ }
+ .stepper-icon {
+   font-size: 36upx;
+   color: #666666;
+   margin-top: -4upx;
+ }

@@ -64,10 +64,10 @@
 				<vun-button loading type="primary" text="加载状态" />
 			</view>
 			<view class="demo-block-item">
-				<vun-button loading loading-url="../../static/loading.gif" type="primary" text="加载状态" />
+				<vun-button loading loading-url="../../static/Rolling-2s-200px.gif" type="primary" text="加载状态" />
 			</view>
 			<view class="demo-block-item">
-				<vun-button loading type="info" loading-text="加载中..." />
+				<vun-button loading loading-url="../../static/Rolling-2s-200px.gif" type="info" loading-text="加载中..." />
 			</view>
 		</view>
 		<!-- end 加载状态 -->

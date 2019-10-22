@@ -1,0 +1,45 @@
+ @import '../common/index.css';
+ .vun-navbar-fixed {
+	 position: fixed;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+ }
+ .vun-navbar {
+    width: 750upx;
+    height: 90upx;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .left {
+		align-items: center;
+		flex-direction: row;
+    width: 180upx;
+    padding-left: 32upx;
+  }
+  .middle-title {
+    font-size: 32upx;
+		font-weight:500;
+    color: #ffffff;
+    height: 36upx;
+    line-height: 34upx;
+  }
+  .right {
+    width: 180upx;
+    padding-right: 32upx;
+    align-items: flex-end;
+  }
+  .left-button {
+    width: 21upx;
+    height: 36upx;
+		margin-right: 20upx;
+  }
+  .right-button {
+    width: 32upx;
+    height: 32upx;
+  }
+  .icon-text {
+    font-size: 28upx;
+    color: #ffffff;
+  }

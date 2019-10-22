@@ -1,6 +1,6 @@
 <template>
 	<view class="van-overlay" :hack="shouldShow" v-if="show" ref="van-overlay"  @click="overlayClose" :style="overlayStyle" >
-	<slot />
+		<slot />
 	</view>
 </template>
 

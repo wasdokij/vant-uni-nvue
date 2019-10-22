@@ -5,7 +5,6 @@ $info : #1989fa;
 $danger: #f44;
 $warning: #ff976a;
 $default: #eee;
-
 .van-button {
 	position: relative;
 	flex-direction: row;
@@ -61,7 +60,6 @@ $default: #eee;
 	}
 	&__loading-text {
 		font-size: 32upx;
-		margin-left: 10upx;
 		color: #fff;
 	}
 	
@@ -127,5 +125,3 @@ $default: #eee;
 	}
 }
 .button-hover { opacity: .5;}
-
-

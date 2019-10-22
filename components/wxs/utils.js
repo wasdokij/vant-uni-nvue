@@ -133,21 +133,30 @@ const Utils = {
 		 * @returns {Object}
 		 */
 		getPageSafeArea () { 
-			return systemInfo.safeArea
+			try {
+				return uni.getSystemInfoSync().safeArea
+			} catch (e) {
+			}
 		},
     /**
      * 获取屏幕安全高度
      * @returns {Number}
      */
     getPageHeight () { 
-			return systemInfo.safeArea.height
+			try{
+				return uni.getSystemInfoSync().safeArea.height
+			}catch(e){
+			}
     },
     /**
      * 获取屏幕真实的设置高度
      * @returns {Number}
      */
     getScreenHeight () {
-			return systemInfo.screenHeight
+			try{
+				return uni.getSystemInfoSync().screenHeight
+			}catch(e){
+			}
     },
 		/**
 		 * 判断当前是否为沉浸式状态栏模式

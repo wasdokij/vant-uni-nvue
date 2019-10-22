@@ -1,0 +1,178 @@
+<template>
+	<view class="vun-stepper">
+		<view class="stepper-minus" data-type="minus" hover-class="vun-btn-hover" @tap="onTap" @touchstart="onTouchStart" @touchend="onTouchEnd"
+		 aria-label="减数" :class="{'stepper-minus-disabled': disabled || value <= min}" :style="{width: buttonSize+'upx', height: buttonSize+'upx'}"
+		 :accessible="true">
+			<text class="stepper-icon" :style="{ color: (disabled || value <= min) ? '#c8c9cc':'#323233' }">-</text>
+		</view>
+		<input class="stepper-input" type="number" :value="value" @input="onInput" @blur="onBlur" :style="disableStyle"
+		 :disabled="disabled || disableInput" />
+		<view class="stepper-plus" data-type="plus" hover-class="vun-btn-hover" @tap="onTap" @touchstart="onTouchStart" @touchend="onTouchEnd" aria-label="加数"
+		 :class="{'stepper-minus-disabled': disabled || value >= max}" :style="{width: buttonSize+'upx', height: buttonSize+'upx'}"
+		 :accessible="true">
+			<text class="stepper-icon" :style="{ color: (disabled || value >= max) ? '#c8c9cc':'#323233' }">+</text>
+		</view>
+	</view>
+</template>
+<script>
+	const LONG_PRESS_START_TIME = 600;
+	const LONG_PRESS_INTERVAL = 200;
+	// 添加num并避免浮点数
+	function add(num1, num2) {
+		const cardinal = Math.pow(10, 10);
+		return Math.round((num1 + num2) * cardinal) / cardinal;
+	}
+	export default {
+		props: {
+			min: {
+				type: [String, Number],
+				default: 1
+			},
+			max: {
+				type: [String, Number],
+				default: Number.MAX_SAFE_INTEGER
+			},
+			step: {
+				type: [String, Number],
+				default: 1
+			},
+			disabled: {
+				type: Boolean,
+				default: false
+			},
+			value: {
+				type: [String, Number],
+				default: 1
+			},
+			decimalLength: {
+				type: Number,
+				default: null
+			},
+			disableInput: {
+				type: Boolean,
+				default: false
+			},
+			inputWidth: {
+				type: String,
+				default: 86
+			},
+			buttonSize: {
+				type: String,
+				default: 56
+			},
+		},
+		computed: {
+			disableStyle() {
+				const obj = {
+					width: (Number(this.inputWidth)) + 'upx',
+					height: (Number(this.buttonSize) + 2) + 'upx',
+					lineHeight: (Number(this.buttonSize) + 2) + 'upx'
+				}
+				if (this.disabled) {
+					return {
+						...obj,
+						color: '#cccccc'
+					}
+				}
+				return obj
+			}
+		},
+		data: () => ({
+			isLess: false,
+			isOver: false,
+			longPressTimer: ''
+		}),
+		watch: {
+			value(value) {
+				if (value === '') return
+				const newValue = this.range(value)
+				if (typeof newValue === 'number' && +this.value !== newValue) {
+					this.value = newValue
+				}
+			}
+		},
+		created() {
+			this.value = this.range(this.value)
+		},
+		methods: {
+			isDisabled(type) {
+				if (type === 'plus') {
+					return this.disabled || this.value >= this.max
+				}
+				return this.disabled || this.value <= this.min
+			},
+			onBlur(event) {
+				const value = this.range(this.value)
+				this.triggerInput(value)
+				this.$emit('blur', event.detail)
+			},
+			// 极限值范围
+			range(value) {
+				value = String(value).replace(/[^0-9.-]/g, '');
+				// format range
+				value = value === '' ? 0 : +value;
+				value = Math.max(Math.min(this.max, value), this.min);
+				// format decimal
+				if (this.isDef(this.decimalLength)) {
+					value = value.toFixed(this.decimalLength);
+				}
+				return value
+			},
+			onChange() {
+				if (this.isDisabled(this.type)) {
+					this.$emit('overlimit', this.type);
+					return;
+				}
+				const diff = this.type === 'minus' ? -this.step : +this.step;
+				const value = add(+this.value, diff);
+				this.triggerInput(this.range(value));
+				this.$emit(this.type);
+			},
+			longPressStep() {
+				this.longPressTimer = setTimeout(() => {
+					this.onChange();
+					this.longPressStep();
+				}, LONG_PRESS_INTERVAL);
+			},
+			onInput(event) {
+				const {
+					value = ''
+				} = event.detail || {}
+				this.triggerInput(value)
+			},
+			onTap(event) {
+				const {
+					type
+				} = event.currentTarget.dataset;
+				this.type = type;
+				this.onChange();
+			},
+			onTouchStart(event) {
+				clearTimeout(this.longPressTimer)
+				const {
+					type
+				} = event.currentTarget.dataset
+				this.type = type
+				this.isLongPress = false
+				this.longPressTimer = setTimeout(() => {
+					this.isLongPress = true
+					this.onChange()
+					this.longPressStep()
+				}, LONG_PRESS_START_TIME)
+			},
+			onTouchEnd() {
+				clearTimeout(this.longPressTimer)
+			},
+			triggerInput(value) {
+				this.value = value
+				this.$emit('change', value)
+			},
+			isDef(value) {
+				return value !== undefined && value !== null;
+			}
+		}
+	};
+</script>
+<style scoped lang="scss">
+	@import './index.scss'
+</style>

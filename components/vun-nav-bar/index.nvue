@@ -1,0 +1,111 @@
+<template>
+	<view :class="{'van-hairline--bottom': border, 'vun-navbar-fixed': fixed}">
+		<view :style="{height: barHeight +'px', backgroundColor: backgroundColor}"></view>
+		<view class="vun-navbar" :style="newBarStyle" v-if="show">
+			<view class="left" @click="onClickLeft" aria-label="返回" :accessible="true">
+				<slot name="left">
+					<image :src="leftButton" v-if="leftButton || leftText" class="left-button"></image>
+					<text v-if="leftText" class="icon-text" :style="{ color: textColor }">{{leftText}}</text>
+				</slot>
+			</view>
+			<slot name="middle">
+				<text class="middle-title" :style="{ color: textColor }">{{title}}</text>
+			</slot>
+			<view class="right" @click="onClickRight">
+				<slot name="right">
+					<image v-if="rightButton && !rightText" class="right-button" :src="rightButton" :aria-hidden="true"></image>
+					<text v-if="rightText" class="icon-text" :style="{ color: textColor }">{{rightText}}</text>
+				</slot>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		Utils
+	} from "../wxs/utils.js";
+	export default {
+		props: {
+			fixed: {
+				type: Boolean,
+				default: false
+			},
+			border: {
+				type: Boolean,
+				default: true
+			},
+			backgroundColor: {
+				type: String,
+				default: '#fff'
+			},
+			leftButton: {
+				type: String,
+				default: 'https://gw.alicdn.com/tfs/TB1x18VpwMPMeJjy1XdXXasrXXa-21-36.png'
+			},
+			textColor: {
+				type: String,
+				default: '#3D3D3D'
+			},
+			rightButton: {
+				type: String,
+				default: ''
+			},
+			title: {
+				type: String,
+				default: '标题'
+			},
+			leftText: {
+				type: String,
+				default: ''
+			},
+			rightText: {
+				type: String,
+				default: ''
+			},
+			useDefaultReturn: {
+				type: Boolean,
+				default: true
+			},
+			show: {
+				type: Boolean,
+				default: true
+			},
+			barStyle: {
+				type: Object
+			}
+		},
+		data() {
+			return {
+				barHeight: Utils.env.getPageSafeArea().top
+			}
+		},
+		computed: {
+			newBarStyle() {
+				const {
+					backgroundColor,
+					barStyle
+				} = this;
+				return {
+					backgroundColor,
+					...barStyle
+				}
+			}
+		},
+		methods: {
+			onClickLeft() {
+				if (this.useDefaultReturn) {
+					uni.navigateBack()
+				}
+				this.$emit('click-left')
+			},
+			onClickRight() {
+				const hasRightContent = this.rightText || this.rightButton || (this.$slots && this.$slots.right)
+				hasRightContent && this.$emit('click-right')
+			}
+		}
+	};
+</script>
+<style scoped lang="scss">
+	@import './index.scss'
+</style>

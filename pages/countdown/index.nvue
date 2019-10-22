@@ -1,0 +1,124 @@
+<template>
+	<view class="page">
+		<view class="demo-block">
+			<text class="demo-block__title">基础用法</text>
+			<view class="demo-block-item">
+				<vun-countdown :time="time" />
+			</view>
+		</view>
+		<view class="demo-block">
+			<text class="demo-block__title">自定义格式</text>
+			<view class="demo-block-item">
+				<vun-countdown :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
+			</view>
+		</view>
+		<view class="demo-block">
+			<text class="demo-block__title">毫秒级渲染</text>
+			<view class="demo-block-item">
+				<vun-countdown millisecond :time="time" format="HH:mm:ss:SSS" />
+			</view>
+		</view>
+		<view class="demo-block">
+			<text class="demo-block__title">自定义样式</text>
+			<view class="demo-block-item">
+				<vun-countdown use-slot :time="time" @change="onChange">
+					<text class="item">{{ timeData.hours }}</text>
+					<text class="item">{{ timeData.minutes }}</text>
+					<text class="item">{{ timeData.seconds }}</text>
+				</vun-countdown>
+			</view>
+		</view>
+
+		<view class="demo-block">
+			<text class="demo-block__title">手动控制</text>
+			<view class="demo-block-item">
+				<vun-countdown ref="countdown"
+				 millisecond
+				:time="time2"
+				:auto-start="false"
+				format="ss:SSS"
+				@finish="finished" />
+				<view class="down-btn">
+					<text class="down-btn-text" @click="onDown('start')">开始</text>
+					<text class="down-btn-text" @click="onDown('pause')">停止</text>
+					<text class="down-btn-text" @click="onDown('reset')">重置</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import VunCountdown from '@/components/vun-countdown'
+	export default {
+		components: {
+			VunCountdown
+		},
+		data() {
+			return {
+				time: 30 * 60 * 60 * 1000,
+				time2: 3000,
+				timeData: {}
+			}
+		},
+		methods: {
+			onChange(e) {
+				this.timeData = e
+			},
+			onDown(val) {
+				this.$refs.countdown[val]()
+			},
+			pause() {
+				this.$refs.countdown.pause()
+			},
+			reset() {
+				this.$refs.countdown.reset()
+			},
+			finished() {
+				uni.showToast({
+				    title: '倒计时结束',
+				    duration: 2000
+				})
+			}
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		// background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+			padding: 0 32upx;
+		}
+
+		&__title {
+			padding: 20upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+
+	.item {
+		width: 44upx;
+		line-height: 44upx;
+		margin-right: 10upx;
+		color: #fff;
+		font-size: 22upx;
+		text-align: center;
+		background-color: #1989fa;
+		border-radius: 4upx;
+	}
+	.down-btn {
+		flex-direction: row;
+		align-items: center;
+		&-text {
+			margin-right: 20upx;
+		}
+	}
+</style>

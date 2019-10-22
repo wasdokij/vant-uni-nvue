@@ -1,0 +1,70 @@
+<template>
+	<view class="page">
+		<view class="demo-block">
+			<text ref="box" class="demo-block__title" @click="minibarRightButtonClick">显示气泡</text>
+		</view>
+		<vun-popover ref="wxc-popover" :buttons="btns" :position="popoverPosition" :arrowPosition="popoverArrowPosition"
+		 @wxcPopoverButtonClicked="popoverButtonClicked" />
+	</view>
+</template>
+
+<script>
+	import VunPopover from '@/components/vun-popover'
+	const dom = weex.requireModule('dom')
+	export default {
+		components: {
+			VunPopover
+		},
+		data() {
+			return {
+				btns: [{
+						icon: '',
+						text: 'Scan',
+						key: 'key-scan'
+					},
+					{
+						icon: '',
+						text: 'My Qrcode',
+						key: 'key-qrcode'
+					},
+					{
+						icon: '',
+						text: 'Help',
+						key: 'key-help'
+					},
+				],
+				popoverPosition:{x:-14,y:0},
+				popoverArrowPosition:{pos:'top',x:-15}
+			}
+		},
+		methods: {
+			minibarRightButtonClick () {
+				const result = dom.getComponentRect(this.$refs.box, option => { 
+					console.log('getComponentRect:', option)
+				})
+				this.$refs['wxc-popover'].wxcPopoverShow();
+			},
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		// background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

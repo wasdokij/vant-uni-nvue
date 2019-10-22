@@ -33,8 +33,8 @@
 		},
 		computed: {
 			upxHeight () {
-				const upxHeight = uni.upx2px(this.notifyHeight)
-				return this.barHeight + upxHeight
+				const upx_height = uni.upx2px(this.notifyHeight)
+				return this.barHeight + upx_height
 			},
 			isNeedShow() {
 				setTimeout(() => {

@@ -1,0 +1,66 @@
+<template>
+	<view class="page">
+		<view class="demo-block">
+			<text class="demo-block__title">Stepper 步进器</text>
+		</view>
+		<vun-cell title="基础用法">
+			<vun-stepper ></vun-stepper>
+		</vun-cell>
+		<vun-cell title="步长设置">
+			<vun-stepper step="4"></vun-stepper>
+		</vun-cell>
+		<vun-cell title="限制输入范围">
+			<vun-stepper min="2" max="5" ></vun-stepper>
+		</vun-cell>
+		<vun-cell title="禁用状态">
+			<vun-stepper disabled></vun-stepper>
+		</vun-cell>
+		<vun-cell title="自定义大小">
+			<vun-stepper input-width="120" button-size="65"></vun-stepper>
+		</vun-cell>
+		<vun-cell title="禁止输入">
+			<vun-stepper disableInput></vun-stepper>
+		</vun-cell>
+		<vun-cell title="固定小数位数">
+			<vun-stepper decimal-length="2" step="0.01"></vun-stepper>
+		</vun-cell>
+	</view>
+</template>
+
+<script>
+	import VunStepper from '@/components/vun-stepper'
+	import VunCell from '@/components/vun-cell'
+	export default {
+		components: {
+			VunStepper,
+			VunCell
+		},
+		data() {
+			return {
+			}
+		},
+		methods: {
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		// background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

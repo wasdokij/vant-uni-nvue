@@ -1,0 +1,56 @@
+<template>
+	<view class="page">
+		<view class="demo-block">
+			<text class="demo-block__title">基础用法</text>
+			<view class="demo-block-item">
+				<vun-nav-bar left-text="返回" right-text="更多"/>
+			</view>
+		</view>
+		<view class="demo-block">
+			<text class="demo-block__title">高级用法</text>
+			<view class="demo-block-item">
+				<vun-nav-bar left-text="返回" >
+					<vun-icon :name="'\ue60d'"  slot="right"/>
+				</vun-nav-bar>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import VunNavBar from '@/components/vun-nav-bar'
+	import VunIcon from '@/components/vun-icon'
+	export default {
+		components: {
+			VunNavBar,
+			VunIcon
+		},
+		data() {
+			return {
+			}
+		},
+		methods: {
+		}
+	}
+</script>
+
+<style scoped lang="scss">
+	.page {
+		background-color: #f5f5f5;
+	}
+
+	.demo-block {
+		padding: 0;
+		margin-bottom: 24upx;
+
+		&-item {
+			margin-bottom: 20upx;
+		}
+
+		&__title {
+			padding: 35upx 32upx;
+			color: rgba(69, 90, 100, 0.6);
+			font-size: 28upx;
+		}
+	}
+</style>

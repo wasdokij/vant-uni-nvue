@@ -13,7 +13,12 @@
 			<vun-cell title="Overlay 遮罩层" url="/pages/overlay/index" is-link></vun-cell>
 			<vun-cell title="SwipeCell 滑动单元格" url="/pages/swipe-cell/index" is-link></vun-cell>
 		</vun-cell-group>
+		<vun-cell-group title="表单组件">
+			<vun-cell title="CountDown 倒计时" url="/pages/countdown/index" is-link></vun-cell>
+			<vun-cell title="Stepper 步进器" url="/pages/stepper/index" is-link></vun-cell>
+		</vun-cell-group>
 		<vun-cell-group title="导航组件">
+			<vun-cell title="NavBar 导航栏" url="/pages/nav-bar/index" is-link></vun-cell>
 			<vun-cell title="TabBar 底部Tab组件" url="/pages/tab-bar/index" is-link></vun-cell>
 			<vun-cell title="TabPage 顶部Tab组件" url="/pages/tab-page/index" is-link></vun-cell>
 		</vun-cell-group>

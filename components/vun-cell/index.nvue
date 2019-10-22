@@ -1,27 +1,36 @@
 <template>
 	<view class="van-hairline--bottom" @click="jumpLink" :class="setClass" :hover-class="clickable || isLink ? 'van-cell--hover' : '' " hover-stay-time="70" :style="customStyle">
 		<view class="van-cell-wrap">
-			<vun-icon v-if="icon" :color="iconColor" :size="iconSize" :custom-style="iconStyle" :name="icon" class="van-cell__left-icon-wrap" />
-			<slot v-else name="icon" />
-			<view :style="{'width': titleWidth || 'auto'}" class="van-cell__title title-class"
-			 :class="title  ? '' : 'none'">
-				<text v-if="title" class="van-cell__title__text">{{ title }}</text>
-				<slot v-else name="title" />
-			</view>
+			<slot name="icon">
+				<vun-icon v-if="icon" :color="iconColor" :size="iconSize" :custom-style="iconStyle" :name="icon" class="van-cell__left-icon-wrap" />
+			</slot>
+			
+			<slot name="title">
+				<view v-if="title" :style="{'width': titleWidth || 'auto'}" class="van-cell__title title-class"
+				 :class="title  ? '' : 'none'">
+					<text  class="van-cell__title__text">{{ title }}</text>
+				</view>
+			</slot>
+			
+			<slot>
+				<view v-if="value || value === 0" class="van-cell__value value-class">
+					<text class="van-cell__value__text">{{ value }}</text>
+				</view>
+			</slot>
 
-			<view class="van-cell__value value-class">
-				<text v-if="value || value === 0"  class="van-cell__value__text">{{ value }}</text>
-				<slot v-else name="value" />
-			</view>
+			<slot name="right-icon" >
+				<vun-icon v-if="isLink" size="32" name="arrow" color="#969799" class="van-cell__right-icon-wrap" />
+			</slot>
 
-			<vun-icon v-if="isLink" size="32" name="arrow" color="#969799" class="van-cell__right-icon-wrap" />
-			<slot v-else name="right-icon" />
 			<slot name="extra" />
 		</view>
-		<view v-if="label || useLabelSlot" class="van-cell__label label-class">
-			<slot v-if="useLabelSlot" name="label" />
-			<text v-else-if="label" class="van-cell__label__text">{{ label }}</text>
-		</view>
+		
+		<slot name="label">
+			<view v-if="label || useLabelSlot" class="van-cell__label label-class">
+				<text class="van-cell__label__text">{{ label }}</text>
+			</view>
+		</slot>
+	
 	</view>
 </template>
 
