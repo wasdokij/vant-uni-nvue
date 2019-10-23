@@ -40,7 +40,7 @@
 			const { tabStyles } = this;
 			try {
 			    const res = uni.getSystemInfoSync();
-					this.contentStyle = { height: (res.safeArea.height - tabStyles.height) + 'px' };
+					this.contentStyle = { height: (res.safeArea.height - uni.upx2px(tabStyles.height)) + 'px' };
 			} catch (e) {
 			    // error
 			}
@@ -56,7 +56,6 @@
 <style scoped lang="scss">
 	.item-container {
 		width: 750upx;
-		height: 100%;
 		align-items: center;
 		justify-content: center;
 		background-color: #f2f3f4;

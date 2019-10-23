@@ -15,8 +15,7 @@
 - **Android 由于 [点击事件和滑动手势冲突约束](http://weex-project.io/cn/references/gesture.html#约束)，需在子元素上绑定对应事件，可通过`wxc-pan-item`解决此问题，同时记得在`wxcPanItemPan`回调中处理 Android 事件**
 - 支持**居中形式 Tab**，将 tabStyles 中的 leftOffset 配置合适的值即可
  
-## [Demo](https://h5.m.taobao.com/trip/wx-detection-demo/tab-page/index.html?_wx_tpl=https%3A%2F%2Fh5.m.taobao.com%2Ftrip%2Fwx-detection-demo%2Ftab-page%2Findex.weex.js)
-<img src="https://gw.alipayobjects.com/zos/rmsportal/drLGhWpwwSbMTjMCWomE.gif" width="200"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://gw.alipayobjects.com/zos/rmsportal/WWwmdByyfODYLycoDmZP.gif" width="200"/>;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://gtms02.alicdn.com/tfs/TB1sjw3aMMPMeJjy1XdXXasrXXa-750-1334.jpg" width="200"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.alicdn.com/tfs/TB1rGKAcxSYBuNjSspjXXX73VXa-200-200.png" width="160"/>
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/tabpage.gif?raw=true" width="240"/>
 
 ## 使用方法
 

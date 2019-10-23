@@ -6,17 +6,13 @@
 #### 规则
 - 用于底部 Tab 切换页面，目前支持 **icon 、text 、iconFont**形式的底栏
 
-## [Demo](https://h5.m.taobao.com/trip/wx-detection-demo/tab-bar/index.html?_wx_tpl=https%3A%2F%2Fh5.m.taobao.com%2Ftrip%2Fwx-detection-demo%2Ftab-bar%2Findex.weex.js)
-
-
-<img src="https://img.alicdn.com/tfs/TB1n6jOg3DD8KJjy0FdXXcjvXXa-562-1000.gif" width="240"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.alicdn.com/tfs/TB1AEx7gcLJ8KJjy0FnXXcFDpXa-200-200.png" width="160"/>
-
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/tabbar.gif?raw=true" width="240"/>
 
 ## 使用方法
 
 ```vue
 <template>
-  <wxc-tab-bar :tab-titles="tabTitles"
+  <vun-tab-bar :tab-titles="tabTitles"
                :tab-styles="tabStyles"
                title-type="icon"
                @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
@@ -31,7 +27,7 @@
     
     <!-- 第四个页面内容-->
     <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
-  </wxc-tab-bar>
+  </vun-tab-bar>
 </template>
 
 <style scoped>

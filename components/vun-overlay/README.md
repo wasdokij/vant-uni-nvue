@@ -1,9 +1,11 @@
-# van-overlay 
+# vun-overlay 
 
  > 蒙层组件
  
 ### 规则
-常用于 van-mask、van-dialog、van-popup 等的基础蒙层组件
+常用于 vun-mask、vun-dialog、vun-popup 等的基础蒙层组件
+
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/overlay.gif?raw=true" width="240"/>
 
 ## 使用方法
 
@@ -11,14 +13,14 @@
 <template>
 	<view class="page">
 		<div @click="onClickShow">显示遮罩层</div>
-		<vu-overlay :show="show" opacity="0.7" @transitionEnd="transitionEnd"></vu-overlay>
+		<vun-overlay :show="show" opacity="0.7" @transitionEnd="transitionEnd"></vun-overlay>
 	</view>
 </template>
 
 <script>
-	import VuOverlay from '@/components/overlay/index.nvue'
+	import VunOverlay from '@/components/overlay'
 	export default {
-		components: { VuOverlay },
+		components: { VunOverlay },
 		data() {
 			return {
 				show: false,

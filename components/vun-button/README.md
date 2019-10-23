@@ -2,6 +2,8 @@
 
 > vun 按钮组件，支持 5 种基本类型 button，可自定义样式
 
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/buttom.gif?raw=true" width="240"/>
+
 ## 使用方法
 
 ```vue
@@ -17,7 +19,6 @@
 </script>
 
 ```
-更详细代码可以参考 [这里])
 
 ### 可配置参数
 | Prop | Type | Required | Default | Description |

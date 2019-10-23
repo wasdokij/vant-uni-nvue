@@ -37,14 +37,10 @@
 <script>
 	import VunIcon from '../vun-icon/index.nvue';
 	import { bem } from '../wxs/utils.js';
-	import {
-		link
-	} from '../mixins/link';
 	export default {
 		components: {
 			VunIcon
 		},
-		mixins: [link],
 		props: {
 			url: String,
 			title: null,

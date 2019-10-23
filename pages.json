@@ -1,12 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/popover/index",
-			"style": {
-				"navigationBarTitleText": "Popover 气泡菜单"
-			}
-		},
-		{
 			"path": "pages/home",
 			"style": {
 				"navigationBarTitleText": "Vun UI"
@@ -43,6 +37,12 @@
 				"app-plus": {
 					// "titleNView": false
 				}
+			}
+		},
+		{
+			"path": "pages/popover/index",
+			"style": {
+				"navigationBarTitleText": "Popover 气泡菜单"
 			}
 		},
 		{

@@ -5,8 +5,7 @@
 ### 规则
 - 局部 Loading 不建议设置太大
 
-## [Demo](https://h5.m.taobao.com/trip/wxc-loading/index.html?_wx_tpl=https%3A%2F%2Fh5.m.taobao.com%2Ftrip%2Fwxc-loading%2Fdemo%2Findex.native-min.js)
-<img src="https://img.alicdn.com/tfs/TB11cTsfBfH8KJjy1XbXXbLdXXa-376-668.gif" width="240"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.alicdn.com/tfs/TB195ehSpXXXXc4XpXXXXXXXXXX-200-200.png" width="160"/>
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/loading.gif?raw=true" width="240"/>
 
 ## 使用方法
 

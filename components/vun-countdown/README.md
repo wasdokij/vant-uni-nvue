@@ -5,6 +5,8 @@
 ### 规则
 CountDown 倒计时
 
+<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/countdown.gif?raw=true" width="240"/>
+
 ## 使用方法
 
 ```vue
