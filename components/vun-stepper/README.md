@@ -5,7 +5,7 @@
 ### 规则
 - 用作增加或者减少当前数值, 常用于商品数量的小幅度修改
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/steooer.gif?raw=true" width="240"/>
+<img src="/static/gif/steooer.gif?raw=true" width="240"/>
 
 ## 使用方法
 
@@ -25,8 +25,6 @@
   };
 </script>
 ```
-
-更详细代码可以参考 [demo](https://github.com/alibaba/weex-ui/blob/master/example/stepper/index.vue)
 
 
 ### 可配置参数

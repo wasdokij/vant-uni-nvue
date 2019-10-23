@@ -5,7 +5,7 @@
 ### 规则
 常用于 vun-mask、vun-dialog、vun-popup 等的基础蒙层组件
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/overlay.gif?raw=true" width="240"/>
+<img src="/static/gif/overlay.gif?raw=true" width="240"/>
 
 ## 使用方法
 
@@ -13,12 +13,12 @@
 <template>
 	<view class="page">
 		<div @click="onClickShow">显示遮罩层</div>
-		<vun-overlay :show="show" opacity="0.7" @transitionEnd="transitionEnd"></vun-overlay>
+		<vun-overlay ref="vunPopup" :show="show" opacity="0.7" @transitionEnd="transitionEnd"></vun-overlay>
 	</view>
 </template>
 
 <script>
-	import VunOverlay from '@/components/overlay'
+	import VunOverlay from '@/components/vun-overlay'
 	export default {
 		components: { VunOverlay },
 		data() {
@@ -38,7 +38,7 @@
 </script>
 ```
 
-更详细代码可以参考 [demo]()
+
 
 ### 可配置参数
 
@@ -65,5 +65,5 @@
 ### 调用关闭
 
 ```
-在wxc-popup上面绑定ref，然后调用this.$refs.wxcPopup.hide();即可关闭，常用于侧滑筛选面板
+在vun-popup上面绑定ref，然后调用this.$refs.vunPopup.hide();即可关闭，常用于侧滑筛选面板
 ```

@@ -1,5 +1,5 @@
 <template>
-	<view :class="{'van-hairline--bottom': border, 'vun-navbar-fixed': fixed}">
+	<view :class="{'vun-hairline--bottom': border, 'vun-navbar-fixed': fixed}">
 		<view :style="{height: barHeight +'px', backgroundColor: backgroundColor}"></view>
 		<view class="vun-navbar" :style="newBarStyle" v-if="show">
 			<view class="left" @click="onClickLeft" aria-label="返回" :accessible="true">

@@ -1,7 +1,7 @@
 <template>
 	<block>
-		<text v-if="title" class="van-cell-group__title">{{ title }}</text>
-		<view class="van-cell-group" :class="border ? 'van-hairline--top-bottom' : ''">
+		<text v-if="title" class="vun-cell-group__title">{{ title }}</text>
+		<view class="vun-cell-group" :class="border ? 'vun-hairline--top-bottom' : ''">
 			<slot />
 		</view>
 	</block>

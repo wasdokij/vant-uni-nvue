@@ -11,6 +11,7 @@
 			<vun-cell title="Loading 加载" url="/pages/loading/index" is-link></vun-cell>
 			<vun-cell title="Notify 消息通知" url="/pages/notify/index" is-link></vun-cell>
 			<vun-cell title="Overlay 遮罩层" url="/pages/overlay/index" is-link></vun-cell>
+			<vun-cell title="Popover 气泡菜单" url="/pages/popover/index" is-link></vun-cell>
 			<vun-cell title="SwipeCell 滑动单元格" url="/pages/swipe-cell/index" is-link></vun-cell>
 		</vun-cell-group>
 		<vun-cell-group title="表单组件">

@@ -6,7 +6,7 @@
 - 一次只可滑动一行列表
 - 点击右边按钮或点击列表可隐藏操作。
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/swipecell.gif?raw=true" width="240"/>
+<img src="/static/gif/swipecell.gif?raw=true" width="240"/>
 
 ## 使用方法
 ```vue

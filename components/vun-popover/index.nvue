@@ -1,7 +1,7 @@
 <template>
 	<view class="wrapper">
 		<vun-overlay :show="show" v-if="show" ref="overlay" v-bind="overlayCfg" @close="hideAction"></vun-overlay>
-		<view ref="wxc-popover" class="g-popover" v-if="show && buttons.length" :style="contentStyle">
+		<view ref="vun-popover" class="g-popover" v-if="show && buttons.length" :style="contentStyle">
 			<view class="u-popover-arrow" :style="arrowStyle"></view>
 			<view class="u-popover-inner">
 				<view :class="['i-btn',i === buttons.length-1 ? 'i-btn-noborder' : '']" v-for="(item,i) in buttons" :key="i" @click="wxcButtonClicked(i,item.key)">
@@ -172,7 +172,7 @@
 			 * smooth in
 			 **/
 			wxcPopoverAnimationShow() {
-				const popoverEl = this.$refs['wxc-popover'];
+				const popoverEl = this.$refs['vun-popover'];
 				if (!popoverEl) return
 				this.setAnimationLock();
 				animation.transition(popoverEl, {
@@ -192,7 +192,7 @@
 				if (this.animationLock) {
 					return;
 				}
-				this.$emit('wxcPopoverButtonClicked', {
+				this.$emit('onItem', {
 					key,
 					index
 				});
@@ -205,7 +205,7 @@
 				if (this.animationLock) return
 				if (this.hasAnimation) {
 					this.setAnimationLock()
-					const popoverEl = this.$refs['wxc-popover'];
+					const popoverEl = this.$refs['vun-popover'];
 					if (!popoverEl) return
 					animation.transition(popoverEl, {
 						styles: {

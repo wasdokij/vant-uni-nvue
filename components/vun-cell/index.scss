@@ -1,9 +1,9 @@
-@import '../common/index.css';
+@import '../common/index.scss';
 .cell {
 	
 }
 
-.van-cell {
+.vun-cell {
 	position: relative;
 	padding: 20upx 30upx;
 	line-height: 48upx;
@@ -75,15 +75,15 @@
 	
 }
 
-.van-cell--hover {
+.vun-cell--hover {
 	background-color: #f2f3f5
 }
 
-.van-cell--center {
+.vun-cell--center {
 	align-items: center
 }
 
-.van-cell--large {
+.vun-cell--large {
 	padding-top: 30upx;
 	padding-bottom: 30upx
 }

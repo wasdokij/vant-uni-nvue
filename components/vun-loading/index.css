@@ -1,4 +1,4 @@
-@import '../common/index.css';
+@import '../common/index.scss';
 .image {
 	width: 60upx;
 	height: 60upx;

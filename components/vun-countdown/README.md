@@ -5,7 +5,9 @@
 ### 规则
 CountDown 倒计时
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/countdown.gif?raw=true" width="240"/>
+
+<img src="/static/gif/countdown.gif?raw=true" width="240"/>
+
 
 ## 使用方法
 
@@ -27,7 +29,6 @@ CountDown 倒计时
 </script>
 ```
 
-更详细代码可以参考 [demo]()
 
 ### 可配置参数 Prop
 

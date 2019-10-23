@@ -1,18 +1,18 @@
 <template>
 	<view :class="setClass" :style="setStyle" @tap="onClick" :hover-class="disabled || loading ? '' : 'button-hover'">
 		<block v-if="loading">
-			<view class="van-button__text_wrap">
+			<view class="vun-button__text_wrap">
 				<vun-loading :size="loadingSize" :url="loadingUrl"></vun-loading>
-				<text v-if="loadingText"  class="van-button__loading-text" :class="setTextClass">{{ loadingText }}</text>
+				<text v-if="loadingText"  class="vun-button__loading-text" :class="setTextClass">{{ loadingText }}</text>
 			</view>
 		</block>
 		<block v-else>
-			<view class="van-button__text_wrap">
+			<view class="vun-button__text_wrap">
 				<vun-icon v-if="icon" :name="icon" 
 				:color="iconColor"
 				:custom-style="iconStyle"
-				 button-icon="van-button-class" class="van-button__icon" />
-				<text v-if="text" class="van-button__text" :class="setTextClass">{{text}}</text>
+				 button-icon="vun-button-class" class="vun-button__icon" />
+				<text v-if="text" class="vun-button__text" :class="setTextClass">{{text}}</text>
 				<slot v-else  />
 			</view>
 		</block>
@@ -73,7 +73,7 @@
 			}
 		},
 		mounted() {
-			const hairline = this.hairline ? 'van-button van-hairline--surround' : ''
+			const hairline = this.hairline ? 'vun-button vun-hairline--surround' : ''
 			const buttonc = bem('button', [this.type, this.size, {
 				round: this.round,
 				plain: this.plain,

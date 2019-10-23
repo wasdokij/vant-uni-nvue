@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import VunButton from '@/components/vun-button/index.nvue'
+  import VunButton from '@/components/vun-button'
   export default {
     components: { VunButton }
   }

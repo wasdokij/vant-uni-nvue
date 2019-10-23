@@ -1,33 +1,33 @@
 <template>
-	<view class="van-hairline--bottom" @click="jumpLink" :class="setClass" :hover-class="clickable || isLink ? 'van-cell--hover' : '' " hover-stay-time="70" :style="customStyle">
-		<view class="van-cell-wrap">
+	<view class="vun-hairline--bottom" @click="jumpLink" :class="setClass" :hover-class="clickable || isLink ? 'vun-cell--hover' : '' " hover-stay-time="70" :style="customStyle">
+		<view class="vun-cell-wrap">
 			<slot name="icon">
-				<vun-icon v-if="icon" :color="iconColor" :size="iconSize" :custom-style="iconStyle" :name="icon" class="van-cell__left-icon-wrap" />
+				<vun-icon v-if="icon" :color="iconColor" :size="iconSize" :custom-style="iconStyle" :name="icon" class="vun-cell__left-icon-wrap" />
 			</slot>
 			
 			<slot name="title">
-				<view v-if="title" :style="{'width': titleWidth || 'auto'}" class="van-cell__title title-class"
+				<view v-if="title" :style="{'width': titleWidth || 'auto'}" class="vun-cell__title title-class"
 				 :class="title  ? '' : 'none'">
-					<text  class="van-cell__title__text">{{ title }}</text>
+					<text  class="vun-cell__title__text">{{ title }}</text>
 				</view>
 			</slot>
 			
 			<slot>
-				<view v-if="value || value === 0" class="van-cell__value value-class">
-					<text class="van-cell__value__text">{{ value }}</text>
+				<view v-if="value || value === 0" class="vun-cell__value value-class">
+					<text class="vun-cell__value__text">{{ value }}</text>
 				</view>
 			</slot>
 
 			<slot name="right-icon" >
-				<vun-icon v-if="isLink" size="32" name="arrow" color="#969799" class="van-cell__right-icon-wrap" />
+				<vun-icon v-if="isLink" size="32" name="arrow" color="#969799" class="vun-cell__right-icon-wrap" />
 			</slot>
 
 			<slot name="extra" />
 		</view>
 		
 		<slot name="label">
-			<view v-if="label || useLabelSlot" class="van-cell__label label-class">
-				<text class="van-cell__label__text">{{ label }}</text>
+			<view v-if="label || useLabelSlot" class="vun-cell__label label-class">
+				<text class="vun-cell__label__text">{{ label }}</text>
 			</view>
 		</slot>
 	

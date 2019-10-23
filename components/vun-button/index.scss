@@ -1,11 +1,11 @@
-@import '../common/index.css';
-
+@import '../common/index.scss';
 $primary: #07c160;
 $info : #1989fa;
 $danger: #f44;
 $warning: #ff976a;
 $default: #eee;
-.van-button {
+
+.vun-button {
 	position: relative;
 	flex-direction: row;
 	flex: 1;
@@ -102,13 +102,13 @@ $default: #eee;
 	// end 边框、背景
 
 }
-.van-button__text_wrap {
+.vun-button__text_wrap {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 }
 // 文字颜色
-.van-button__text {
+.vun-button__text {
 	font-size: 28upx;
 	color: #fff;
 	&--default {color: #333}

@@ -6,7 +6,7 @@
 - 自适应刘海屏
 - 隐藏左边返回按钮，直接传入`left-button=""`即可
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/navbar.jpg?raw=true" width="240"/>
+<img src="/static/gif/navbar.jpg?raw=true" width="240"/>
 
 ## 使用方法
 
@@ -26,8 +26,6 @@
   };
 </script>
 ```
-
-更详细代码可以参考 [demo](https://github.com/alibaba/weex-ui/blob/master/example/minibar/index.vue)
 
 
 ### 可配置参数

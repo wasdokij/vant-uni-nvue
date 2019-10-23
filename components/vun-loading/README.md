@@ -5,7 +5,9 @@
 ### 规则
 - 局部 Loading 不建议设置太大
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/loading.gif?raw=true" width="240"/>
+
+<img src="/static/gif/loading.gif?raw=true" width="240"/>
+
 
 ## 使用方法
 
@@ -30,7 +32,6 @@
 </script>
 ```
 
-更详细代码可以参考 [demo]()
 
 ### 可配置参数
 

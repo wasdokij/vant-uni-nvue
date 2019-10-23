@@ -6,69 +6,77 @@
 #### 规则
 - 用于底部 Tab 切换页面，目前支持 **icon 、text 、iconFont**形式的底栏
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/tabbar.gif?raw=true" width="240"/>
+<img src="/static/gif/tabbar.gif?raw=true" width="240"/>
 
 ## 使用方法
 
 ```vue
 <template>
-  <vun-tab-bar :tab-titles="tabTitles"
-               :tab-styles="tabStyles"
-               title-type="icon"
-               @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
-    <!-- 第一个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>首页</text></div>
-    
-    <!-- 第二个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>特别推荐</text></div>
-    
-    <!-- 第三个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>消息中心</text></div>
-    
-    <!-- 第四个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
-  </vun-tab-bar>
+	<view class="page">
+		<vun-tab-bar 
+		:tab-titles="tabTitles"
+		 :tab-styles="tabStyles" 
+		 title-type="icon"
+			@wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
+			<!-- 第一个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>首页</text></view>
+			<!-- 第二个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>特别推荐</text></view>
+			<!-- 第三个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>消息中心</text></view>
+			<!-- 第四个页面内容-->
+			<view class="item-container" :style="contentStyle"><text>我的主页</text></view>
+		</vun-tab-bar>
+	</view>
 </template>
-
-<style scoped>
-  .item-container {
-    width: 750px;
-    background-color: #f2f3f4;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
 <script>
-  import { WxcTabBar, Utils } from 'weex-ui';
- 
-  // https://github.com/alibaba/weex-ui/blob/master/example/tab-bar/config.js 
-  import Config from './config'
-
-  export default {
-    components: { WxcTabBar },
-    data: () => ({
-      tabTitles: Config.tabTitles,
-      tabStyles: Config.tabStyles
-    }),
-    created () {
-      const tabPageHeight = Utils.env.getPageHeight();
-      // 如果页面没有导航栏，可以用下面这个计算高度的方法
-      // const tabPageHeight = env.deviceHeight / env.deviceWidth * 750;
-      const { tabStyles } = this;
-      this.contentStyle = { height: (tabPageHeight - tabStyles.height) + 'px' };
-    },
-    methods: {
-      wxcTabBarCurrentTabSelected (e) {
-        const index = e.page;
-        // console.log(index);
-      }
-    }
-  };
+	import VunTabBar from '@/components/vun-tab-bar/index.nvue'
+	import Config from './config'
+	import BindEnv from '@/components/wxs/bind-env.js'
+	import {
+		Utils
+	} from '@/components/wxs/utils.js'
+	export default {
+		components: {
+			VunTabBar
+		},
+		data() {
+			return {
+				tabTitles: Config.tabTitles,
+				tabStyles: Config.tabStyles
+			}
+		},
+		created() {
+			 const tabPageHeight = Utils.env.getPageHeight();
+			// 如果页面没有导航栏，可以用下面这个计算高度的方法
+			// const tabPageHeight = env.deviceHeight / env.deviceWidth * 750;
+			const { tabStyles } = this;
+			try {
+			    const res = uni.getSystemInfoSync();
+					this.contentStyle = { height: (res.safeArea.height - uni.upx2px(tabStyles.height)) + 'px' };
+			} catch (e) {
+			    // error
+			}
+		},
+		methods: {
+			wxcTabBarCurrentTabSelected (e) {
+				const index = e.page;
+			}
+		}
+	}
 </script>
+
+<style scoped lang="scss">
+	.item-container {
+		width: 750upx;
+		align-items: center;
+		justify-content: center;
+		background-color: #f2f3f4;
+	}
+</style>
 
 ```
 更详细代码可以参考 [demo](https://github.com/alibaba/weex-ui/blob/master/example/tab-bar/index.vue)
-
 
 ### 可配置参数
 

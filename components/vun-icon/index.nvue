@@ -1,8 +1,8 @@
 <template>
-	<view class="van-icon-wrap" :class="iconImage" 
+	<view class="vun-icon-wrap" :class="iconImage" 
 	 @tap="onClick">
-		<text v-if="!iconImage" class="van-info" :style="(color ? 'color: ' + color + ';' : '') + (size ? 'font-size: ' + size + 'upx;' : '')">{{ Icon[name] || name }}</text>
-		<image v-else :src="name" :style="[customStyle]"  mode="widthFix" class="van-icon__image" />
+		<text v-if="!iconImage" class="vun-info" :style="(color ? 'color: ' + color + ';' : '') + (size ? 'font-size: ' + size + 'upx;' : '')">{{ Icon[name] || name }}</text>
+		<image v-else :src="name" :style="[customStyle]"  mode="widthFix" class="vun-icon__image" />
 	</view>
 </template>
 
@@ -36,7 +36,7 @@
 			})
 		},
 		created() {
-			this.iconImage = isSrc(this.name) ? 'van-icon--image' : ''
+			this.iconImage = isSrc(this.name) ? 'vun-icon--image' : ''
 		},
 		methods: {
 			onClick(event) {
@@ -46,6 +46,6 @@
 	};
 </script>
 
-<style scoped>
-	@import url('index.css'); 
+<style scoped lang="scss">
+	@import  './index.scss'
 </style>

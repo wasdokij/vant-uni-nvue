@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<vun-overlay :show="haveOverlay && isOverShow" v-if="show" ref="overlay" v-bind="overlayCfg" @close="overlayClose"></vun-overlay>
-		<view ref="van-popup" v-if="show" :height="_height" :hack="isNeedShow" @click="()=>{}" :class="['van-popup', position]"
+		<view ref="vun-popup" v-if="show" :height="_height" :hack="isNeedShow" @click="()=>{}" :class="['vun-popup', position]"
 		 :style="padStyle">
 			<slot />
 		</view>
@@ -129,7 +129,7 @@
 			},
 			appearPopup(bool, duration = 300) {
 				this.isShow = bool;
-				const popupEl = this.$refs['van-popup'];
+				const popupEl = this.$refs['vun-popup'];
 				if (!popupEl) {
 					return;
 				}
@@ -179,6 +179,6 @@
 		}
 	}
 </script>
-<style scoped>
-	@import url('index.css');
+<style scoped lang="scss">
+	@import './index.scss';
 </style>

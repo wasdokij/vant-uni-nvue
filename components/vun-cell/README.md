@@ -6,7 +6,7 @@
   - 一般由主要信息、操作动作组成，信息在左、操作在右
   - 可以对 `label, title, value` 进行 `slot` 覆盖
   
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/cell.gif?raw=true" width="240"/>
+<img src="/static/gif/cell.gif?raw=true" width="240"/>
 
 ## 使用方法
 
@@ -88,9 +88,9 @@
 </template>
 
 <script>
-  import VunCellGroup from '@/components/vun-cell-group/index.nvue'
-  import VunCell from '@/components/vun-cell/index.nvue'
-  import VunIcon from '@/components/vun-icon/index.nvue';
+  import VunCellGroup from '@/components/vun-cell-group'
+  import VunCell from '@/components/vun-cell'
+  import VunIcon from '@/components/vun-icon';
   export default {
   	components: {
   		VunCellGroup,

@@ -1,5 +1,5 @@
 <template>
-	<view class="van-overlay" :hack="shouldShow" v-if="show" ref="van-overlay"  @click="overlayClose" :style="overlayStyle" >
+	<view class="vun-overlay" :hack="shouldShow" v-if="show" ref="vun-overlay"  @click="overlayClose" :style="overlayStyle" >
 		<slot />
 	</view>
 </template>
@@ -73,7 +73,7 @@
 				} = this;
 				const needEmit = !bool && canAutoClose;
 				needEmit && (this.$emit('close', {})); // 点击遮罩层立即执行回调
-				const overlayEl = this.$refs['van-overlay'];
+				const overlayEl = this.$refs['vun-overlay'];
 				if (hasAnimation && overlayEl) {
 					animation.transition(overlayEl, {
 						styles: {
@@ -93,7 +93,7 @@
 	};
 </script>
 <style scoped>
-	.van-overlay {
+	.vun-overlay {
 		width: 750upx;
 		position: fixed;
 		top: 0;

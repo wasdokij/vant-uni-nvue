@@ -21,7 +21,7 @@
 </template>
 
 <script>
-	import VunIcon from '@/components/vun-icon/index.nvue'
+	import VunIcon from '@/components/vun-icon'
 	export default {
 		components: {
 			VunIcon,
@@ -30,7 +30,8 @@
 </script>
 
 ```
-更详细代码可以参考 [这里]()
+
+
 ### 可配置参数
 | Prop | Type | Required | Default | Description |
 | ---- |:----:|:---:|:-------:| :----------:|

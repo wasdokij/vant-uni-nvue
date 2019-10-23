@@ -7,7 +7,7 @@
 - 从顶部或底部浮出的模态，点击蒙层进行关闭
 - 支持使用者主动关闭
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/popup.gif?raw=true" width="240"/>
+<img src="/static/gif/popup.gif?raw=true" width="240"/>
 
 ## 使用方法
 

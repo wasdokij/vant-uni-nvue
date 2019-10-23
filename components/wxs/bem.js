@@ -1,6 +1,6 @@
 var array = require('./array.js');
 var object = require('./object.js');
-var PREFIX = 'van-';
+var PREFIX = 'vun-';
 
 function join(name, mods) {
   name = PREFIX + name;

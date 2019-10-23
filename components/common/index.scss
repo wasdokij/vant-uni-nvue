@@ -1,0 +1,31 @@
+.vun-hairline,
+.vun-hairline--bottom,
+.vun-hairline--left,
+.vun-hairline--right,
+.vun-hairline--surround,
+.vun-hairline--top,
+.vun-hairline--top-bottom {
+	position: relative;
+	border-style: solid;
+	border-color: #dee2e6;
+}
+.vun-hairline--top {
+	border-top-width: 1upx
+}
+.vun-hairline--left {
+	border-left-width: 1upx
+}
+.vun-hairline--right {
+	border-right-width: 1upx
+}
+.vun-hairline--bottom {
+	border-bottom-width: 1upx
+}
+.vun-hairline--top-bottom {
+	border-top-width: 1upx;
+	border-bottom-width: 1upx;
+	
+}
+.vun-hairline--surround {
+	border-width: 1upx
+}

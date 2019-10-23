@@ -1,61 +1,83 @@
-# vun-notify 
+# vun-popover 
 
- >  消息提示
- 
+ > 在点击控件或者某个区域后，浮出一个气泡菜单来做更多的操作。 同时设置了遮罩层，通过点击遮罩层的任一位置，进行退出。
+
 ### 规则
-常用于 当前页面通知
+- 常用于拓展气泡按钮组
+- 在指定坐标位置弹出气泡，点击遮罩层进行关闭
+- 支持上、下、左、右四个方向
+- 可自定义气泡和箭头具体位置
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/overlay.gif?raw=true" width="240"/>
+<img src="/static/gif/popover.gif?raw=true" width="240"/>
+
 
 ## 使用方法
 
 ```vue
 <template>
-	<view class="page">
-		<vun-button type="default" @click="onClickShow" text="消息提示" />
-		
-		<vun-notify ref="notify"></vun-notify>
-	</view>
+  <vun-popover ref="wxc-popover" :buttons="btns" :position="popoverPosition" :arrowPosition="popoverArrowPosition"
+   @wxcPopoverButtonClicked="popoverButtonClicked" />
 </template>
 
 <script>
-	import VunButton from '@/components/vun-button'
-	import VunNotify from '@/components/vun-notify'
-	export default {
-		components: { VunButton, VunNotify },
-		methods: {
-			onClickShow () {
-				this.$refs.notify.Notify({
-					content: '这是弹出通知的'
-				})
-			}
-		}
-	}
+  import VunPopover from '@/components/vun-popover'
+  const dom = weex.requireModule('dom')
+  export default {
+  	components: {
+  		VunPopover
+  	},
+    data: () => ({
+      btns: [{
+      		icon: '',
+      		text: 'Scan',
+      		key: 'key-scan'
+      	},
+      	{
+      		icon: '',
+      		text: 'My Qrcode',
+      		key: 'key-qrcode'
+      	},
+      	{
+      		icon: '',
+      		text: 'Help',
+      		key: 'key-help'
+      	},
+      ],
+      popoverPosition:{x:-14,y:0},
+      popoverArrowPosition:{pos:'top',x:-15}
+    }),
+    methods: {
+      minibarRightButtonClick () {
+      	const result = dom.getComponentRect(this.$refs.box, option => { 
+      		console.log('getComponentRect:', option) // 可通过获取dom 位置
+      	})
+      	this.$refs['wxc-popover'].wxcPopoverShow();
+      }
+    }
+  };
 </script>
 ```
 
-更详细代码可以参考 [demo]()
 
-### Notify API
-|属性|说明|类型|默认值|
-|-------------|------------|--------|-----|
-|notifyColor|notify背景样式|String|rgba(45, 61, 82, 0.7)|
-|notifyHeight|notify高度|Number|88|
-|duration|展示时长(ms)，值为 0 时，notify 不会消失|Number|2000|
-|content|展示文案|String|-|
-|contentStyle|展示文案样式|Object|{fontSize: '32upx','color': '#e1e4e7'}|
-|animation|notify动画方式|Object|{timingFunction: 'ease-out'} [配置文档](https://weex.apache.org/zh/docs/modules/animation.html#transition)|
+### 可配置参数
 
+| Prop | Type | Required | Default | Description |
+|-------------|------------|--------|-----|-----|
+| buttons | `Array` |`Y`|`[]` | 气泡按钮数据列表` |
+| position | `Object` |`Y`|`{x:0,y:0}` | 气泡位置，x>0 为左边距，x<0 为右边距，y同理 |
+| arrowPosition | `Object` |`Y`|`{pos:'top',x:0,y:0}` | 气泡箭头位置，pos 为'top,bottom,left,right'，配合x，y定位箭头位置  |
+| coverColor | `String` |`N`|`rgba(0,0,0,0.4)`| 遮罩层颜色，如 `rgba(0,0,0,0.4)`，`rgb(0,0,0)`，`#000` |
+| hasAnimation | `Boolean` |`N`| `true` | 是否开启展开动画  |
+| textStyle | `Object` |`N`| `{}` | 文字样式覆盖 |
+
+### 调用显示
+
+```
+在vun-popover上面绑定ref，然后调用this.$refs['vun-popover'].hide();即可显示
+```
 
 ### 事件回调
 
 ```
-//消失后执行回调
- `@close="close"`
-```
-
-### 调用关闭
-
-```
-当duration为0时，可在vun-notify上面绑定ref，然后调用this.$refs.notify.hide();即可关闭
+// `@onItem` 返回一个对象，标志点击按钮的 `key` 和 `index`
 ```
