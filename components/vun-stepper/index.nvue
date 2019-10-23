@@ -5,7 +5,7 @@
 		 :accessible="true">
 			<text class="stepper-icon" :style="{ color: (disabled || value <= min) ? '#c8c9cc':'#323233' }">-</text>
 		</view>
-		<input class="stepper-input" type="number" :value="value" @input="onInput" @blur="onBlur" :style="disableStyle"
+		<input class="stepper-input" :type="decimalLength ? 'digit' : 'number'" :value="value" @input="onInput" @blur="onBlur" :style="disableStyle"
 		 :disabled="disabled || disableInput" />
 		<view class="stepper-plus" data-type="plus" hover-class="vun-btn-hover" @tap="onTap" @touchstart="onTouchStart" @touchend="onTouchEnd" aria-label="加数"
 		 :class="{'stepper-minus-disabled': disabled || value >= max}" :style="{width: buttonSize+'upx', height: buttonSize+'upx'}"

@@ -1,4 +1,4 @@
-import Binding from 'weex-bindingx';
+import Binding from "weex-bindingx";
 import { Utils } from './utils.js';
 
 const BindEnv = {

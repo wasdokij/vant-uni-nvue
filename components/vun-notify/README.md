@@ -5,7 +5,7 @@
 ### 规则
 常用于 当前页面通知
 
-<img src="/static/gif/notify.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/notify.gif?raw=true" width="240"/>
 
 ## 使用方法
 

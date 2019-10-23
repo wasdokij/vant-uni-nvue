@@ -5,7 +5,7 @@
 ### 规则
 常用于 vun-mask、vun-dialog、vun-popup 等的基础蒙层组件
 
-<img src="/static/gif/overlay.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/overlay.gif?raw=true" width="240"/>
 
 ## 使用方法
 

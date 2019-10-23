@@ -1,6 +1,6 @@
 # vun-icon
 
->  常用 iconfont 的封装
+>  常用 iconfont 的封装，根据个人的需求添加iconfont
 
 ## 使用方法
 

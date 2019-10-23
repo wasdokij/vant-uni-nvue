@@ -6,7 +6,7 @@
   - 一般由主要信息、操作动作组成，信息在左、操作在右
   - 可以对 `label, title, value` 进行 `slot` 覆盖
   
-<img src="/static/gif/cell.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/cell.gif?raw=true" width="240"/>
 
 ## 使用方法
 

@@ -6,7 +6,7 @@
 CountDown 倒计时
 
 
-<img src="/static/gif/countdown.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/countdown.gif?raw=true" width="240"/>
 
 
 ## 使用方法

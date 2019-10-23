@@ -6,7 +6,7 @@
 - 自适应刘海屏
 - 隐藏左边返回按钮，直接传入`left-button=""`即可
 
-<img src="/static/gif/navbar.jpg?raw=true" width="240"/>
+<img src="/unpackage/gif/navbar.jpg?raw=true" width="240"/>
 
 ## 使用方法
 

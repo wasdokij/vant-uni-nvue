@@ -6,7 +6,7 @@
 - 局部 Loading 不建议设置太大
 
 
-<img src="/static/gif/loading.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/loading.gif?raw=true" width="240"/>
 
 
 ## 使用方法

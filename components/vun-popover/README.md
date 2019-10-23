@@ -8,7 +8,7 @@
 - 支持上、下、左、右四个方向
 - 可自定义气泡和箭头具体位置
 
-<img src="/static/gif/popover.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/popover.gif?raw=true" width="240"/>
 
 
 ## 使用方法

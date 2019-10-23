@@ -2,7 +2,7 @@
 
 > vun 按钮组件，支持 5 种基本类型 button，可自定义样式
 
-<img src="/static/gif/buttom.gif" width="240"/>
+<img src="/unpackage/gif/buttom.gif" width="240"/>
 
 ## 使用方法
 

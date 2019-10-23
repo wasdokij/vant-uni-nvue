@@ -2,6 +2,9 @@
 	<image class="image" :style="{ width: size + 'upx', height: size + 'upx' }" mode="widthFix" :src="url"></image>
 </template>
 <script>
+	import {
+		BTN_GIF
+	} from './type';
 	export default {
 		props: {
 			size: {
@@ -10,7 +13,7 @@
 			},
 			url: {
 				type: String,
-				default: 'http://ww3.sinaimg.cn/large/006tNbRwly1feoqhig367g306r06rglx.gif'
+				default: BTN_GIF
 			}
 		}
 	};

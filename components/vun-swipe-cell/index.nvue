@@ -51,7 +51,7 @@
 				animation.transition(dom, {
 					styles,
 					duration: 200, //ms
-					timingFunction: "ease",
+					timingFunction: "linear",
 					delay: 100 //ms
 				});
 			},

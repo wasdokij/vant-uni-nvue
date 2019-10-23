@@ -98,7 +98,7 @@
 		Utils
 	} from '../wxs/utils.js';
 	import BindEnv from '../wxs/bind-env';
-	import Binding from 'weex-bindingx';
+	import Binding from "weex-bindingx";
 
 
 	export default {

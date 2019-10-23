@@ -6,7 +6,7 @@
 #### 规则
 - 用于底部 Tab 切换页面，目前支持 **icon 、text 、iconFont**形式的底栏
 
-<img src="/static/gif/tabbar.gif?raw=true" width="240"/>
+<img src="/unpackage/gif/tabbar.gif?raw=true" width="240"/>
 
 ## 使用方法
 
