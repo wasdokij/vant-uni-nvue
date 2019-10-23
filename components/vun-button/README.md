@@ -2,7 +2,7 @@
 
 > vun 按钮组件，支持 5 种基本类型 button，可自定义样式
 
-<img src="https://github.com/wasdokij/vant-uni-nvue/blob/master/static/gif/buttom.gif?raw=true" width="240"/>
+<img src="/wasdokij/vant-uni-nvue/static/gif/buttom.gif" width="240"/>
 
 ## 使用方法
 
